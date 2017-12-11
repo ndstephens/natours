@@ -1,6 +1,3 @@
-/*//?=============================================
-//?            KEYFRAME ANIMATIONS               =
-//?=============================================*/
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -33,10 +30,7 @@
     opacity: 0;
     transform: scale(1.3); } }
 
-/*//?=============================================
-//?            DOCUMENT                          =
-//?=============================================*/
-/*//* don't forget to select all pseudo-elements as well */
+/*//* select all pseudo-elements as well '::after' '::before'*/
 *,
 *::after,
 *::before {
@@ -50,16 +44,63 @@ html {
   font-size: 62.5%; }
 
 body {
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  line-height: 1.7;
-  color: #777;
   padding: 3rem;
   box-sizing: border-box; }
 
-/*//?=============================================
-//?            HEADER                            =
-//?=============================================*/
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #777; }
+
+/*//?----------  HERO BUTTON  ----------*/
+.btn:link, .btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  /*//* make 'block' or 'inline-block' for box-model props such as padding / margin / etc */
+  display: inline-block;
+  /*//* a very high 'bd-radius' number will simply round off the sides */
+  border-radius: 10rem;
+  /*//* 'transition' prop has to be on the 'initial state' or property */
+  /*//* simply list 'all' properties instead of each individually (animate anything that changes) */
+  transition: all 200ms;
+  position: relative;
+  font-size: 1.6rem; }
+
+.btn:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.btn:active {
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+
+.btn--animated-rise {
+  animation: moveInBottom 1000ms 2000ms backwards; }
+
+.btn--white {
+  background-color: #fff;
+  color: #777;
+  /*//?----------  HERO BUTTON FLASHY ANIMATION  ----------*/
+  /*//* the "::after" pseudo-element basically adds a 'virtual-element' after the original element, which we can then style and animate */ }
+  .btn--white::after {
+    background-color: #fff;
+    /*//* always have to include some content, often it's an empty string */
+    content: "";
+    display: inline-block;
+    /*//* height and width are matching the original or parent element with the '&' class */
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    /*//* position exactly where parent is, but behind it */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; }
+  .btn--white:hover::after {
+    animation: btnFlash 400ms; }
+
 .header {
   height: 95vh;
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
@@ -110,56 +151,3 @@ body {
   letter-spacing: 1.75rem;
   margin-right: -1.75rem;
   animation: moveInRight 1000ms 900ms backwards; }
-
-/*//?----------  HERO BUTTON  ----------*/
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  /*//* make 'block' or 'inline-block' for box-model props such as padding / margin / etc */
-  display: inline-block;
-  /*//* a very high 'bd-radius' number will simply round off the sides */
-  border-radius: 10rem;
-  /*//* 'transition' prop has to be on the 'initial state' or property */
-  /*//* simply list 'all' properties instead of each individually (animate anything that changes) */
-  transition: all 200ms;
-  position: relative;
-  font-size: 1.6rem; }
-
-.btn:hover {
-  transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-
-.btn:active {
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
-
-.btn--white {
-  background-color: #fff;
-  color: #777; }
-
-.btn--animated-rise {
-  animation: moveInBottom 1000ms 2000ms backwards; }
-
-/*//?----------  HERO BUTTON FLASHY ANIMATION  ----------*/
-/*//* the "::after" pseudo-element basically adds a 'virtual-element' after the original element, which we can then style and animate */
-.btn::after {
-  /*//* always have to include some content, often it's an empty string */
-  content: '';
-  display: inline-block;
-  /*//* height and width are matching the original or parent element with the '.btn' class */
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
-  /*//* position exactly where parent is, but behind it */
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1; }
-
-.btn--white::after {
-  background-color: #fff; }
-
-.btn:hover::after {
-  animation: btnFlash 400ms; }

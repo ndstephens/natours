@@ -1,0 +1,57 @@
+.header {
+    height: 95vh;
+    background-image: linear-gradient(
+            to right bottom,
+            rgba($color-primary-light, 0.8),
+            rgba($color-primary-dark, 0.8)
+        ),
+        url("../img/hero.jpg");
+    /*//* don't forget to include 'background-size: cover' */
+    background-size: cover;
+    /*//* 'bg-pos: top' ensures the top of the image is the stationary point as the screen size changes (the bottom and sides will adjust instead)...or use 'center' */
+    background-position: top;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+.header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+}
+.header__logo {
+    height: 3.5rem;
+}
+.header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*//* centers all elements within the container */
+    text-align: center;
+}
+
+.heading-primary {
+    color: $text-color-white;
+    text-transform: uppercase;
+    /*//* hack to fix any odd shakiness in animation of element, not really needed here */
+    backface-visibility: hidden;
+    margin-bottom: 6rem;
+}
+.heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    /*//* a negative 'margin-right' counteracts the 'letter-spacing' of the last character, which throws off its centering */
+    margin-right: -3.5rem;
+    /*//* 'animation-fill-mode: backwards' uses animation's starting values during the delay period (keeps element hidden / opacity at 0 before animation starts) */
+    animation: moveInLeft 1000ms 200ms backwards;
+}
+.heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    margin-right: -1.75rem;
+    animation: moveInRight 1000ms 900ms backwards;
+}

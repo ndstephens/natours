@@ -1,0 +1,19 @@
+/*//* select all pseudo-elements as well '::after' '::before'*/
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    /*//* all selectors now inherit 'box-sizing: border-box' from 'body' */
+    box-sizing: inherit;
+}
+
+html {
+    /*//* want this at '10px' for easy rem calculations, however shouldn't hard-code b/c would override user's browser settings.  standard setting is 16px.  10/16 = 0.625 */
+    font-size: 62.5%;
+}
+
+body {
+    padding: 3rem;
+    box-sizing: border-box;
+}
