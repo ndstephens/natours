@@ -1,0 +1,6 @@
+.section-about {
+    background-color:$color-grey-light-1;
+    padding: 25rem 0;
+    /*//* must vertically extend the bg-color into the clipped zone of the Header above (which is pure white).  The '.header' class is '95vh', then minus the '75vh' of the 'clip-path' property equals '20vh'.  Make it negative to extend upwards into the '<header>' element */
+    margin-top: -20vh;
+}

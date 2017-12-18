@@ -1,0 +1,10 @@
+
+/*//* any inline-block elements that sit within a parent having this class will be centered within that parent */
+.u-center-text {
+    text-align: center;
+}
+
+/*//* basic utility to add 'margin-bottom', versus adding property into existing class(es).  not sure i agree with this method */
+.u-margin-bottom-8 {
+    margin-bottom: 8rem;
+}

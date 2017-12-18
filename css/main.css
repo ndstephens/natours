@@ -54,6 +54,55 @@ body {
   line-height: 1.7;
   color: #777; }
 
+/*//?----------  HEADER  ----------*/
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /*//* hack to fix any odd shakiness in animation of element, not really needed here */
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+
+.heading-primary--main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+  /*//* a negative 'margin-right' counteracts the 'letter-spacing' of the last character, which throws off its centering */
+  margin-right: -3.5rem;
+  /*//* 'animation-fill-mode: backwards' uses animation's starting values during the delay period (keeps element hidden / opacity at 0 before animation starts) */
+  animation: moveInLeft 1000ms 200ms backwards; }
+
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.75rem;
+  margin-right: -1.75rem;
+  animation: moveInRight 1000ms 900ms backwards; }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  /*//* use 'bg-clip: text' to use the text as a clip-path for the 'bg-image' gradient, and must make the text transparent then to see it */
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: .2rem;
+  transition: all .2s; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(5deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+/*//* any inline-block elements that sit within a parent having this class will be centered within that parent */
+.u-center-text {
+  text-align: center; }
+
+/*//* basic utility to add 'margin-bottom', versus adding property into existing class(es).  not sure i agree with this method */
+.u-margin-bottom-8 {
+  margin-bottom: 8rem; }
+
 /*//?----------  HERO BUTTON  ----------*/
 .btn:link, .btn:visited {
   text-transform: uppercase;
@@ -104,7 +153,6 @@ body {
 
 .row {
   max-width: 114rem;
-  background-color: #eee;
   /*//* auto center the '.row' block elements */
   margin: 0 auto;
   /*//* all rows will include columns that are floated, which therefore need to be cleared */
@@ -117,7 +165,6 @@ body {
     display: table;
     clear: both; }
   .row [class*="col-"] {
-    background-color: orangered;
     float: left; }
     .row [class*="col-"]:not(:last-child) {
       margin-right: 6rem; }
@@ -161,27 +208,8 @@ body {
   /*//* centers all elements within the container */
   text-align: center; }
 
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  /*//* hack to fix any odd shakiness in animation of element, not really needed here */
-  backface-visibility: hidden;
-  margin-bottom: 6rem; }
-
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  /*//* a negative 'margin-right' counteracts the 'letter-spacing' of the last character, which throws off its centering */
-  margin-right: -3.5rem;
-  /*//* 'animation-fill-mode: backwards' uses animation's starting values during the delay period (keeps element hidden / opacity at 0 before animation starts) */
-  animation: moveInLeft 1000ms 200ms backwards; }
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.75rem;
-  margin-right: -1.75rem;
-  animation: moveInRight 1000ms 900ms backwards; }
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  /*//* must vertically extend the bg-color into the clipped zone of the Header above (which is pure white).  The '.header' class is '95vh', then minus the '75vh' of the 'clip-path' property equals '20vh'.  Make it negative to extend upwards into the '<header>' element */
+  margin-top: -20vh; }

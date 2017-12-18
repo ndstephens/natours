@@ -2,5 +2,52 @@ body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
     line-height: 1.7;
-    color: $text-color-darkgrey;
+    color: $text-color-grey-dark;
+}
+
+
+/*//?----------  HEADER  ----------*/
+.heading-primary {
+    color: $text-color-white;
+    text-transform: uppercase;
+    /*//* hack to fix any odd shakiness in animation of element, not really needed here */
+    backface-visibility: hidden;
+    margin-bottom: 6rem;
+}
+.heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    /*//* a negative 'margin-right' counteracts the 'letter-spacing' of the last character, which throws off its centering */
+    margin-right: -3.5rem;
+    /*//* 'animation-fill-mode: backwards' uses animation's starting values during the delay period (keeps element hidden / opacity at 0 before animation starts) */
+    animation: moveInLeft 1000ms 200ms backwards;
+}
+.heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    margin-right: -1.75rem;
+    animation: moveInRight 1000ms 900ms backwards;
+}
+
+
+.heading-secondary {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+    /*//* use 'bg-clip: text' to use the text as a clip-path for the 'bg-image' gradient, and must make the text transparent then to see it */
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .2rem;
+    transition: all .2s;
+
+    &:hover {
+        transform: skewY(2deg) skewX(5deg) scale(1.1);
+        text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+    }
 }
