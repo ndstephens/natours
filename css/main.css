@@ -187,6 +187,41 @@ body {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   transform: translateY(0); }
 
+/*//?----------  3 IMAGES IN ABOUT SECTION  ----------*/
+.composition {
+  position: relative;
+  /*//* when hovering over the '.composition' element (parent of the 3 photos) AND you're not the photo that is currently being hovered over, then scale down */ }
+  .composition:hover .composition__photo:not(:hover) {
+    transform: scale(0.95); }
+
+.composition__photo {
+  width: 55%;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
+  position: absolute;
+  z-index: 1;
+  outline-offset: 2rem;
+  /*//* specified each transition prop, b/c wanted to omit transitioning the z-index change (looked weird) */
+  transition: transform .2s, box-shadow .2s, outline .2s; }
+  .composition__photo:hover {
+    outline: 1.5rem solid #55c57a;
+    transform: scale(1.05) translateY(-0.5rem);
+    /*//* slightly grow the box-shadow, as would naturally happen when image grows */
+    box-shadow: 0 2.5 4rem rgba(0, 0, 0, 0.5);
+    z-index: 10; }
+
+.composition__photo--p1 {
+  left: 0;
+  top: -2rem; }
+
+.composition__photo--p2 {
+  right: 0;
+  top: 2rem; }
+
+.composition__photo--p3 {
+  left: 20%;
+  top: 10rem; }
+
 .row {
   max-width: 114rem;
   /*//* auto center the '.row' block elements */
