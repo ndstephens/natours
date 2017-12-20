@@ -10,6 +10,7 @@
 
 html {
     /*//* want this at '10px' for easy rem calculations, however shouldn't hard-code b/c would override user's browser settings.  standard setting is 16px.  10/16 = 0.625 */
+    /*//* Defines what '1rem' is */
     font-size: 62.5%;
 }
 
