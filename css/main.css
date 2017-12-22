@@ -90,8 +90,8 @@ body {
   /*//* use 'bg-clip: text' to use the text as a clip-path for the 'bg-image' gradient, and must make the text transparent then to see it */
   -webkit-background-clip: text;
   color: transparent;
-  letter-spacing: .2rem;
-  transition: all .2s; }
+  letter-spacing: 0.2rem;
+  transition: all 0.2s; }
   .heading-secondary:hover {
     transform: skewY(2deg) skewX(5deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
@@ -187,6 +187,66 @@ body {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   transform: translateY(0); }
 
+.card {
+  /*//* larger value makes effect visually less severe (as if you're viewing from further away as it rotates) */
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 50rem; }
+  .card:hover .card__side--front {
+    transform: rotateY(-180deg); }
+  .card:hover .card__side--back {
+    transform: rotateY(0deg); }
+
+.card__side {
+  height: 50rem;
+  transition: all 0.8s;
+  /*//* both sides of card need to occupy the same space */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /*//* need to hide the backside of each card */
+  backface-visibility: hidden;
+  border-radius: 3px;
+  /*//* 'overflow: hidden' forces child image to sit within the border-radius */
+  overflow: hidden;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+
+.card__side--front {
+  background-color: #fff; }
+
+.card__side--back {
+  /*//* needs to start out already rotated around */
+  transform: rotateY(180deg); }
+
+.card__side--back-1 {
+  background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
+
+.card__side--back-2 {
+  background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+
+.card__side--back-3 {
+  background-image: linear-gradient(to right bottom, #2998ff, #5643fa); }
+
+.card__picture {
+  background-size: cover;
+  /*//* can experiment with different modes in Dev Tools for instant feedback */
+  /*//* blends the linear-gradient with the image underneath it */
+  background-blend-mode: screen;
+  height: 23rem;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+
+.card__picture--1 {
+  background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../../img/nat-5.jpg); }
+
+.card__picture--2 {
+  background-image: url(../../img/nat-5.jpg); }
+
+.card__picture--3 {
+  background-image: url(../../img/nat-5.jpg); }
+
 /*//?----------  3 IMAGES IN ABOUT SECTION  ----------*/
 .composition {
   position: relative;
@@ -200,10 +260,12 @@ body {
   border-radius: 2px;
   position: absolute;
   z-index: 1;
+  /*//* can stretch outline out from content */
   outline-offset: 2rem;
   /*//* specified each transition prop, b/c wanted to omit transitioning the z-index change (looked weird) */
   transition: transform .2s, box-shadow .2s, outline .2s; }
   .composition__photo:hover {
+    /*//* works similar to border, but doesn't add to box size and can be offset */
     outline: 1.5rem solid #55c57a;
     transform: scale(1.05) translateY(-0.5rem);
     /*//* slightly grow the box-shadow, as would naturally happen when image grows */
@@ -221,6 +283,26 @@ body {
 .composition__photo--p3 {
   left: 20%;
   top: 10rem; }
+
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  transition: all .3s; }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.03); }
+
+.feature-box__icon {
+  font-size: 6rem;
+  margin-bottom: 0.5rem;
+  /*//* make 'inline-block' to control box properties (such as margin) */
+  display: inline-block;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  color: transparent; }
 
 .row {
   max-width: 114rem;
@@ -261,6 +343,7 @@ body {
   /*//* 'bg-pos: top' ensures the top of the image is the stationary point as the screen size changes (the bottom and sides will adjust instead)...or use 'center' */
   background-position: top;
   position: relative;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
 
 .header__logo-box {
@@ -279,8 +362,27 @@ body {
   /*//* centers all elements within the container */
   text-align: center; }
 
+/*//?----------  ABOUT SECTION  ----------*/
 .section-about {
   background-color: #f7f7f7;
   padding: 25rem 0;
-  /*//* must vertically extend the bg-color into the clipped zone of the Header above (which is pure white).  The '.header' class is '95vh', then minus the '75vh' of the 'clip-path' property equals '20vh'.  Make it negative to extend upwards into the '<header>' element */
+  /*//* must vertically extend the bg-color into the clipped zone of the Header above (which is pure white).  The '.header' class is '95vh', then minus the '75vh' of the 'clip-path' property (in the '.header' class) equals '20vh'.  Make it negative to extend upwards into the '<header>' element */
   margin-top: -20vh; }
+
+/*//?----------  FEATURES SECTION  ----------*/
+.section-features {
+  padding: 20rem 0;
+  /*//* compensates for background gap created by skew (exposes the pure white background) */
+  margin-top: -10rem;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/nat-4.jpg");
+  background-size: cover;
+  transform: skewY(-6deg);
+  /*//* select all DIRECT children of '.section-features' (which is the div.row that contains all the feature box columns) and remove the skew */ }
+  .section-features > * {
+    transform: skewY(6deg); }
+
+/*//?----------  TOURS SECTION  ----------*/
+.section-tours {
+  background-color: #f7f7f7;
+  padding: 25rem 0 50rem;
+  margin-top: -10rem; }

@@ -1,0 +1,81 @@
+.card {
+    /*//* larger value makes effect visually less severe (as if you're viewing from further away as it rotates) */
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    position: relative;
+    height: 50rem;
+
+    &:hover .card__side--front {
+        transform: rotateY(-180deg);
+    }
+    &:hover .card__side--back {
+        transform: rotateY(0deg);
+    }
+}
+.card__side {
+    height: 50rem;
+    transition: all 0.8s;
+    /*//* both sides of card need to occupy the same space */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /*//* need to hide the backside of each card */
+    backface-visibility: hidden;
+    border-radius: 3px;
+    /*//* 'overflow: hidden' forces child image to sit within the border-radius */
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.15);
+}
+.card__side--front {
+    background-color: $color-white;
+}
+.card__side--back {
+    /*//* needs to start out already rotated around */
+    transform: rotateY(180deg);
+}
+.card__side--back-1 {
+    background-image: linear-gradient(
+        to right bottom,
+        $color-secondary-light,
+        $color-secondary-dark
+    );
+}
+.card__side--back-2 {
+    background-image: linear-gradient(
+        to right bottom,
+        $color-primary-light,
+        $color-primary-dark
+    );
+}
+.card__side--back-3 {
+    background-image: linear-gradient(
+        to right bottom,
+        $color-tertiary-light,
+        $color-tertiary-dark
+    );
+}
+
+.card__picture {
+    background-size: cover;
+    /*//* can experiment with different modes in Dev Tools for instant feedback */
+    /*//* blends the linear-gradient with the image underneath it */
+    background-blend-mode: screen;
+    height: 23rem;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+.card__picture--1 {
+    background-image: linear-gradient(
+            to right bottom,
+            $color-secondary-light,
+            $color-secondary-dark
+        ),
+        url(../../img/nat-5.jpg);
+}
+.card__picture--2 {
+    background-image: url(../../img/nat-5.jpg);
+}
+.card__picture--3 {
+    background-image: url(../../img/nat-5.jpg);
+}
