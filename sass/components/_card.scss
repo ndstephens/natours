@@ -27,9 +27,108 @@
     overflow: hidden;
     box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.15);
 }
+
+/*//?----------  FRONT SIDE  ----------*/
 .card__side--front {
     background-color: $color-white;
 }
+
+.card__picture {
+    background-size: cover;
+    /*//* can experiment with different modes in Dev Tools for instant feedback */
+    /*//* blends the linear-gradient with the image underneath it */
+    height: 23rem;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+.card__picture--1 {
+    background-image: linear-gradient(
+            to right bottom,
+            $color-secondary-light,
+            $color-secondary-dark
+        ),
+        url(../../img/nat-5.jpg);
+}
+.card__picture--2 {
+    background-image: linear-gradient(
+            to right bottom,
+            $color-primary-light,
+            $color-primary-dark
+        ),
+        url(../../img/nat-6.jpg);
+}
+.card__picture--3 {
+    background-image: linear-gradient(
+            to right bottom,
+            $color-tertiary-light,
+            $color-tertiary-dark
+        ),
+        url(../../img/nat-7.jpg);
+}
+
+.card__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    color: $text-color-white;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 75%;
+    z-index: 1;
+}
+.card__heading-span {
+    padding: 1rem 1.5rem;
+    /*//* the '.card__heading' width of 75% and this padding cause the span's content box to break into 2 separate lines.  using 'box-decoration-break: clone' gives each separate content box the same padding (to understand effect just disable it in DevTools and see the effect).  in future, maybe just use 2 separate spans. */
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+.card__heading-span--1 {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-light, 0.85),
+        rgba($color-secondary-dark, 0.85)
+    );
+}
+.card__heading-span--2 {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.85),
+        rgba($color-primary-dark, 0.85)
+    );
+}
+.card__heading-span--3 {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-tertiary-light, 0.85),
+        rgba($color-tertiary-dark, 0.85)
+    );
+}
+
+.card__details {
+    padding: 2rem;
+
+    ul {
+        list-style: none;
+        width: 80%;
+        margin: 0 auto;
+
+        li {
+            text-align: center;
+            font-size: 1.5rem;
+            padding: 1rem;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid $color-grey-light-2;
+            }
+        }
+    }
+}
+
+
+/*//?----------  BACK SIDE  ----------*/
 .card__side--back {
     /*//* needs to start out already rotated around */
     transform: rotateY(180deg);
@@ -56,26 +155,23 @@
     );
 }
 
-.card__picture {
-    background-size: cover;
-    /*//* can experiment with different modes in Dev Tools for instant feedback */
-    /*//* blends the linear-gradient with the image underneath it */
-    background-blend-mode: screen;
-    height: 23rem;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+.card__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
 }
-.card__picture--1 {
-    background-image: linear-gradient(
-            to right bottom,
-            $color-secondary-light,
-            $color-secondary-dark
-        ),
-        url(../../img/nat-5.jpg);
+.card__price-box {
+    margin-bottom: 8rem;
+    color: $text-color-white;
 }
-.card__picture--2 {
-    background-image: url(../../img/nat-5.jpg);
+.card__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase;
 }
-.card__picture--3 {
-    background-image: url(../../img/nat-5.jpg);
+.card__price-value {
+    font-size: 6rem;
+    font-weight: 100;
 }

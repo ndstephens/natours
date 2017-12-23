@@ -23,18 +23,9 @@
         transform: translateY(-0.1rem);
         box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
     }
-}
-.btn--animated-rise {
-    animation: moveInBottom 1000ms 2000ms backwards;
-}
-.btn--white {
-    background-color: $color-white;
-    color: $text-color-grey-dark;
-
     /*//?----------  HERO BUTTON FLASHY ANIMATION  ----------*/
     /*//* the "::after" pseudo-element basically adds a 'virtual-element' after the original element, which we can then style and animate */
     &::after {
-        background-color: $color-white;
         /*//* always have to include some content, often it's an empty string */
         content: "";
         display: inline-block;
@@ -48,9 +39,26 @@
         left: 0;
         z-index: -1;
     }
-
     &:hover::after {
         animation: btnFlash 400ms;
+    }
+}
+.btn--animated-rise {
+    animation: moveInBottom 1000ms 1600ms backwards;
+}
+
+.btn--white {
+    background-color: $color-white;
+    color: $text-color-grey-dark;
+    &::after {
+        background-color: $color-white;
+    }
+}
+.btn--green {
+    background-color: $color-primary;
+    color: $text-color-white;
+    &::after {
+        background-color: $color-primary;
     }
 }
 
@@ -62,19 +70,19 @@
         text-decoration: none;
         font-size: $default-font-size;
         border-bottom: 1px solid $color-primary;
-        padding: .3rem;
-        transition: all .2s;
+        padding: 0.3rem;
+        transition: all 0.2s;
     }
 
     &:hover {
         background-color: $color-primary;
         color: $color-white;
-        box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: .15);
-        transform: translateY(-.2rem);
+        box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: 0.15);
+        transform: translateY(-0.2rem);
     }
 
     &:active {
-        box-shadow: 0 .5rem 1rem rgba($color: $color-black, $alpha: .15);
+        box-shadow: 0 0.5rem 1rem rgba($color: $color-black, $alpha: 0.15);
         transform: translateY(0);
     }
 }

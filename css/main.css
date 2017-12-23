@@ -55,7 +55,7 @@ body {
   line-height: 1.7;
   color: #777; }
 
-/*//?----------  HEADER  ----------*/
+/*//?----------  HEADERS  ----------*/
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
@@ -110,7 +110,7 @@ body {
 .u-center-text {
   text-align: center; }
 
-/*//* basic utility to add 'margin-bottom', versus adding property into existing class(es).  not sure i agree with this method */
+/*//* basic utilities to add margin, versus adding property into existing class(es).  not sure i agree with this method */
 .u-margin-bottom-small {
   margin-bottom: 1.5rem; }
 
@@ -120,39 +120,33 @@ body {
 .u-margin-bottom-big {
   margin-bottom: 8rem; }
 
+.u-margin-top-big {
+  margin-top: 8rem; }
+
 /*//?----------  HERO BUTTON  ----------*/
-.btn:link, .btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  /*//* make 'block' or 'inline-block' for box-model props such as padding / margin / etc */
-  display: inline-block;
-  /*//* a very high 'bd-radius' number will simply round off the sides */
-  border-radius: 10rem;
-  /*//* 'transition' prop has to be on the 'initial state' or property */
-  /*//* simply list 'all' properties instead of each individually (animate anything that changes) */
-  transition: all 200ms;
-  position: relative;
-  font-size: 1.6rem; }
-
-.btn:hover {
-  transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-
-.btn:active {
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
-
-.btn--animated-rise {
-  animation: moveInBottom 1000ms 2000ms backwards; }
-
-.btn--white {
-  background-color: #fff;
-  color: #777;
+.btn {
   /*//?----------  HERO BUTTON FLASHY ANIMATION  ----------*/
   /*//* the "::after" pseudo-element basically adds a 'virtual-element' after the original element, which we can then style and animate */ }
-  .btn--white::after {
-    background-color: #fff;
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    /*//* make 'block' or 'inline-block' for box-model props such as padding / margin / etc */
+    display: inline-block;
+    /*//* a very high 'bd-radius' number will simply round off the sides */
+    border-radius: 10rem;
+    /*//* 'transition' prop has to be on the 'initial state' or property */
+    /*//* simply list 'all' properties instead of each individually (animate anything that changes) */
+    transition: all 200ms;
+    position: relative;
+    font-size: 1.6rem; }
+  .btn:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  .btn:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn::after {
     /*//* always have to include some content, often it's an empty string */
     content: "";
     display: inline-block;
@@ -165,8 +159,23 @@ body {
     top: 0;
     left: 0;
     z-index: -1; }
-  .btn--white:hover::after {
+  .btn:hover::after {
     animation: btnFlash 400ms; }
+
+.btn--animated-rise {
+  animation: moveInBottom 1000ms 1600ms backwards; }
+
+.btn--white {
+  background-color: #fff;
+  color: #777; }
+  .btn--white::after {
+    background-color: #fff; }
+
+.btn--green {
+  background-color: #55c57a;
+  color: #fff; }
+  .btn--green::after {
+    background-color: #55c57a; }
 
 .btn-text:link, .btn-text:visited {
   color: #55c57a;
@@ -174,8 +183,8 @@ body {
   text-decoration: none;
   font-size: 1.6rem;
   border-bottom: 1px solid #55c57a;
-  padding: .3rem;
-  transition: all .2s; }
+  padding: 0.3rem;
+  transition: all 0.2s; }
 
 .btn-text:hover {
   background-color: #55c57a;
@@ -213,9 +222,69 @@ body {
   overflow: hidden;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
 
+/*//?----------  FRONT SIDE  ----------*/
 .card__side--front {
   background-color: #fff; }
 
+.card__picture {
+  background-size: cover;
+  /*//* can experiment with different modes in Dev Tools for instant feedback */
+  /*//* blends the linear-gradient with the image underneath it */
+  height: 23rem;
+  background-blend-mode: screen;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+
+.card__picture--1 {
+  background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../../img/nat-5.jpg); }
+
+.card__picture--2 {
+  background-image: linear-gradient(to right bottom, #7ed56f, #28b485), url(../../img/nat-6.jpg); }
+
+.card__picture--3 {
+  background-image: linear-gradient(to right bottom, #2998ff, #5643fa), url(../../img/nat-7.jpg); }
+
+.card__heading {
+  font-size: 2.8rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-align: right;
+  color: #fff;
+  position: absolute;
+  top: 12rem;
+  right: 2rem;
+  width: 75%;
+  z-index: 1; }
+
+.card__heading-span {
+  padding: 1rem 1.5rem;
+  /*//* the '.card__heading' width of 75% and this padding cause the span's content box to break into 2 separate lines.  using 'box-decoration-break: clone' gives each separate content box the same padding (to understand effect just disable it in DevTools and see the effect).  in future, maybe just use 2 separate spans. */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone; }
+
+.card__heading-span--1 {
+  background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); }
+
+.card__heading-span--2 {
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.85), rgba(40, 180, 133, 0.85)); }
+
+.card__heading-span--3 {
+  background-image: linear-gradient(to right bottom, rgba(41, 152, 255, 0.85), rgba(86, 67, 250, 0.85)); }
+
+.card__details {
+  padding: 2rem; }
+  .card__details ul {
+    list-style: none;
+    width: 80%;
+    margin: 0 auto; }
+    .card__details ul li {
+      text-align: center;
+      font-size: 1.5rem;
+      padding: 1rem; }
+      .card__details ul li:not(:last-child) {
+        border-bottom: 1px solid #eee; }
+
+/*//?----------  BACK SIDE  ----------*/
 .card__side--back {
   /*//* needs to start out already rotated around */
   transform: rotateY(180deg); }
@@ -229,23 +298,25 @@ body {
 .card__side--back-3 {
   background-image: linear-gradient(to right bottom, #2998ff, #5643fa); }
 
-.card__picture {
-  background-size: cover;
-  /*//* can experiment with different modes in Dev Tools for instant feedback */
-  /*//* blends the linear-gradient with the image underneath it */
-  background-blend-mode: screen;
-  height: 23rem;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+.card__cta {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  text-align: center; }
 
-.card__picture--1 {
-  background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../../img/nat-5.jpg); }
+.card__price-box {
+  margin-bottom: 8rem;
+  color: #fff; }
 
-.card__picture--2 {
-  background-image: url(../../img/nat-5.jpg); }
+.card__price-only {
+  font-size: 1.4rem;
+  text-transform: uppercase; }
 
-.card__picture--3 {
-  background-image: url(../../img/nat-5.jpg); }
+.card__price-value {
+  font-size: 6rem;
+  font-weight: 100; }
 
 /*//?----------  3 IMAGES IN ABOUT SECTION  ----------*/
 .composition {
@@ -384,5 +455,5 @@ body {
 /*//?----------  TOURS SECTION  ----------*/
 .section-tours {
   background-color: #f7f7f7;
-  padding: 25rem 0 50rem;
+  padding: 25rem 0 15rem;
   margin-top: -10rem; }
