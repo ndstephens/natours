@@ -1,5 +1,7 @@
 /*//?----------  HERO BUTTON  ----------*/
 .btn {
+    /*//* the first '&' is for using the '.btn' class without a ':link' or ':hover' state...such as when it's applied to a <button> element and not an <a> anchor element */
+    &,
     &:link,
     &:visited {
         text-transform: uppercase;
@@ -14,12 +16,19 @@
         transition: all 200ms;
         position: relative;
         font-size: $default-font-size;
+
+        /*//* additional properties for the <button> element */
+        border: none;
+        cursor: pointer;
     }
     &:hover {
         transform: translateY(-0.3rem);
         box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
     }
-    &:active {
+    /*//* including ':focus' is for when the '.btn' class is used on a <button> element b/c when it's in focus it gets a browser defaulted blue outline, which is not wanted */
+    &:active,
+    &:focus {
+        outline: none;
         transform: translateY(-0.1rem);
         box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
     }

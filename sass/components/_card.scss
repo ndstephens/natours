@@ -22,7 +22,7 @@
     width: 100%;
     /*//* need to hide the backside of each card */
     backface-visibility: hidden;
-    border-radius: 3px;
+    border-radius: $border-radius;
     /*//* 'overflow: hidden' forces child image to sit within the border-radius */
     overflow: hidden;
     box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.15);

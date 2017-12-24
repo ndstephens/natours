@@ -108,20 +108,20 @@ body {
 
 /*//* any inline-block elements that sit within a parent having this class will be centered within that parent */
 .u-center-text {
-  text-align: center; }
+  text-align: center !important; }
 
 /*//* basic utilities to add margin, versus adding property into existing class(es).  not sure i agree with this method */
 .u-margin-bottom-small {
-  margin-bottom: 1.5rem; }
+  margin-bottom: 1.5rem !important; }
 
 .u-margin-bottom-medium {
-  margin-bottom: 4rem; }
+  margin-bottom: 4rem !important; }
 
 .u-margin-bottom-big {
-  margin-bottom: 8rem; }
+  margin-bottom: 8rem !important; }
 
 .u-margin-top-big {
-  margin-top: 8rem; }
+  margin-top: 8rem !important; }
 
 .bg-video {
   position: absolute;
@@ -141,9 +141,11 @@ body {
 
 /*//?----------  HERO BUTTON  ----------*/
 .btn {
+  /*//* the first '&' is for using the '.btn' class without a ':link' or ':hover' state...such as when it's applied to a <button> element and not an <a> anchor element */
+  /*//* including ':focus' is for when the '.btn' class is used on a <button> element b/c when it's in focus it gets a browser defaulted blue outline, which is not wanted */
   /*//?----------  HERO BUTTON FLASHY ANIMATION  ----------*/
   /*//* the "::after" pseudo-element basically adds a 'virtual-element' after the original element, which we can then style and animate */ }
-  .btn:link, .btn:visited {
+  .btn, .btn:link, .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
     padding: 1.5rem 4rem;
@@ -155,11 +157,15 @@ body {
     /*//* simply list 'all' properties instead of each individually (animate anything that changes) */
     transition: all 200ms;
     position: relative;
-    font-size: 1.6rem; }
+    font-size: 1.6rem;
+    /*//* additional properties for the <button> element */
+    border: none;
+    cursor: pointer; }
   .btn:hover {
     transform: translateY(-0.3rem);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-  .btn:active {
+  .btn:active, .btn:focus {
+    outline: none;
     transform: translateY(-0.1rem);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
   .btn::after {
@@ -391,6 +397,92 @@ body {
   -webkit-background-clip: text;
   color: transparent; }
 
+.form__group:not(:last-child) {
+  margin-bottom: 2rem; }
+
+.form__input {
+  font-size: 1.5rem;
+  /*//* inputs by default use the browser's default font and color.  don't need to set them explicitly, can simply use 'inherit' */
+  font-family: inherit;
+  color: inherit;
+  padding: 1.5rem 2rem;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  /*//* need to add transparent border-bottom b/c otherwise when the element is in 'focus' and the border-bottom gets added, the element will grow in size by 3px and move on screen.  by already having the border there (yet transparent) the element won't appear to move */
+  border-bottom: 3px solid transparent;
+  width: 90%;
+  display: block;
+  transition: all .3s;
+  /*//* color the placeholder text */
+  /*//* the form label is hidden when the placeholder is visual.  when the user starts typing, the label element drops down and becomes visible */ }
+  .form__input:focus {
+    outline: none;
+    /*//* adding the 'box-shadow' and 'border-bottom' are nice for styling, but whenever you remove the default focus outlining you should add some sort of styling for screen reader accessibility */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #55c57a;
+    /*//* since the input elements have the 'required' attribute included, while the input field is invalid then bottom-border will be orange (color-secondary-dark).  once it's valid, the color will change to green (color-primary) */ }
+    .form__input:focus:invalid {
+      border-bottom: 3px solid #ff7730; }
+  .form__input::-webkit-input-placeholder {
+    color: #999; }
+  .form__input:placeholder-shown + .form__label {
+    opacity: 0;
+    transform: translateY(-4.5rem); }
+
+.form__label {
+  font-size: 1.5rem;
+  color: #999;
+  margin-left: 2rem;
+  margin-top: 0.7rem;
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.5s; }
+
+.form__radio-group {
+  width: 49%;
+  display: inline-block; }
+
+/*//* this is the default radio button the browser supplies */
+.form__radio-input {
+  /*//* 'display: none' completely removes the element (vs using 'opacity' or 'visibility') */
+  display: none;
+  /*//* when it's checked (by clicking on the label, or fake radio button, since it's linked to the radio button) then make the inner dot of the fake radio button visible */ }
+  .form__radio-input:checked + .form__radio-label > .form__radio-button::after {
+    opacity: 1; }
+
+.form__radio-label {
+  font-size: 1.6rem;
+  cursor: pointer;
+  position: relative;
+  padding-left: 3.5rem; }
+
+/*//* the fake radio button */
+.form__radio-button {
+  height: 3rem;
+  width: 3rem;
+  border: 5px solid #55c57a;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: -.4rem;
+  /*//* its inner dot or 'checked' indicator */ }
+  .form__radio-button::after {
+    content: "";
+    display: block;
+    height: 1.3rem;
+    width: 1.3rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #55c57a;
+    opacity: 0;
+    transition: opacity .3s; }
+
 .story {
   width: 75%;
   margin: 0 auto;
@@ -531,3 +623,19 @@ body {
 .section-stories {
   padding: 15rem 0;
   position: relative; }
+
+/*//?----------  BOOKING SECTION  ----------*/
+.section-book {
+  padding: 15rem 0;
+  background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+
+.book {
+  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(../../img/nat-10.jpg);
+  background-size: cover;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.35);
+  height: 50rem; }
+
+.book__form {
+  width: 50%;
+  padding: 6rem; }
