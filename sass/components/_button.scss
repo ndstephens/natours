@@ -58,14 +58,14 @@
 
 .btn--white {
     background-color: $color-white;
-    color: $text-color-grey-dark;
+    color: $text-grey-dark;
     &::after {
         background-color: $color-white;
     }
 }
 .btn--green {
     background-color: $color-primary;
-    color: $text-color-white;
+    color: $text-white;
     &::after {
         background-color: $color-primary;
     }

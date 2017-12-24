@@ -34,7 +34,7 @@
 
     /*//* color the placeholder text */
     &::-webkit-input-placeholder {
-        color: $text-color-grey-dark-2;
+        color: $text-grey-dark-2;
     }
 
     /*//* the form label is hidden when the placeholder is visual.  when the user starts typing, the label element drops down and becomes visible */
@@ -45,7 +45,7 @@
 }
 .form__label {
     font-size: 1.5rem;
-    color: $text-color-grey-dark-2;
+    color: $text-grey-dark-2;
     margin-left: 2rem;
     margin-top: 0.7rem;
     display: block;

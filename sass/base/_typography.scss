@@ -2,12 +2,12 @@ body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
     line-height: 1.7;
-    color: $text-color-grey-dark;
+    color: $text-grey-dark;
 }
 
 /*//?----------  HEADERS  ----------*/
 .heading-primary {
-    color: $text-color-white;
+    color: $text-white;
     text-transform: uppercase;
     /*//* hack to fix any odd shakiness in animation of element, not really needed here */
     backface-visibility: hidden;
