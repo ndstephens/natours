@@ -47,6 +47,7 @@ body {
     );
     /*//* use 'bg-clip: text' to use the text as a clip-path for the 'bg-image' gradient, and must make the text transparent then to see it */
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     letter-spacing: 0.2rem;
     transition: all 0.2s;
