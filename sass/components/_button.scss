@@ -1,97 +1,98 @@
 /*//?----------  HERO BUTTON  ----------*/
 .btn {
-    /*//* the first '&' is for using the '.btn' class without a ':link' or ':hover' state...such as when it's applied to a <button> element and not an <a> anchor element */
-    &,
-    &:link,
-    &:visited {
-        text-transform: uppercase;
-        text-decoration: none;
-        padding: 1.5rem 4rem;
-        /*//* make 'block' or 'inline-block' for box-model props such as padding / margin / etc */
-        display: inline-block;
-        /*//* a very high 'bd-radius' number will simply round off the sides */
-        border-radius: 10rem;
-        /*//* 'transition' prop has to be on the 'initial state' or property */
-        /*//* simply list 'all' properties instead of each individually (animate anything that changes) */
-        transition: all 200ms;
-        position: relative;
-        font-size: $default-font-size;
+  /*//* the first '&' is for using the '.btn' class without a ':link' or ':hover' state...such as when it's applied to a <button> element and not an <a> anchor element */
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    /*//* make 'block' or 'inline-block' for box-model props such as padding / margin / etc */
+    display: inline-block;
+    /*//* a very high 'bd-radius' number will simply round off the sides */
+    border-radius: 10rem;
+    /*//* 'transition' prop has to be on the 'initial state' or property */
+    /*//* simply list 'all' properties instead of each individually (animate anything that changes) */
+    transition: all 200ms;
+    position: relative;
+    font-size: $default-font-size;
 
-        /*//* additional properties for the <button> element */
-        border: none;
-        cursor: pointer;
-    }
-    &:hover {
-        transform: translateY(-0.3rem);
-        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
-    }
-    /*//* including ':focus' is for when the '.btn' class is used on a <button> element b/c when it's in focus it gets a browser defaulted blue outline, which is not wanted */
-    &:active,
-    &:focus {
-        outline: none;
-        transform: translateY(-0.1rem);
-        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
-    }
-    /*//?----------  HERO BUTTON FLASHY ANIMATION  ----------*/
-    /*//* the "::after" pseudo-element basically adds a 'virtual-element' after the original element, which we can then style and animate */
-    &::after {
-        /*//* always have to include some content, often it's an empty string */
-        content: "";
-        display: inline-block;
-        /*//* height and width are matching the original or parent element with the '&' class */
-        height: 100%;
-        width: 100%;
-        border-radius: 10rem;
-        /*//* position exactly where parent is, but behind it */
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-    }
-    &:hover::after {
-        animation: btnFlash 400ms;
-    }
-}
-.btn--animated-rise {
+    /*//* additional properties for the <button> element */
+    border: none;
+    cursor: pointer;
+  }
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+  }
+  /*//* including ':focus' is for when the '.btn' class is used on a <button> element b/c when it's in focus it gets a browser defaulted blue outline, which is not wanted */
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+  /*//?----------  HERO BUTTON FLASHY ANIMATION  ----------*/
+  /*//* the "::after" pseudo-element basically adds a 'virtual-element' after the original element, which we can then style and animate */
+  &::after {
+    /*//* always have to include some content, often it's an empty string */
+    content: "";
+    display: inline-block;
+    /*//* height and width are matching the original or parent element with the '&' class */
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    /*//* position exactly where parent is, but behind it */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  &:hover::after {
+    animation: btnFlash 400ms;
+  }
+
+  &.btn--animated-rise {
     animation: moveInBottom 1000ms 1600ms backwards;
-}
+  }
 
-.btn--white {
+  &.btn--white {
     background-color: $color-white;
     color: $text-grey-dark;
     &::after {
-        background-color: $color-white;
+      background-color: $color-white;
     }
-}
-.btn--green {
+  }
+  &.btn--green {
     background-color: $color-primary;
     color: $text-white;
     &::after {
-        background-color: $color-primary;
+      background-color: $color-primary;
     }
+  }
 }
 
 .btn-text {
-    &:link,
-    &:visited {
-        color: $color-primary;
-        display: inline-block;
-        text-decoration: none;
-        font-size: $default-font-size;
-        border-bottom: 1px solid $color-primary;
-        padding: 0.3rem;
-        transition: all 0.2s;
-    }
+  &:link,
+  &:visited {
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    font-size: $default-font-size;
+    border-bottom: 1px solid $color-primary;
+    padding: 0.3rem;
+    transition: all 0.2s;
+  }
 
-    &:hover {
-        background-color: $color-primary;
-        color: $color-white;
-        box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: 0.15);
-        transform: translateY(-0.2rem);
-    }
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: 0.15);
+    transform: translateY(-0.2rem);
+  }
 
-    &:active {
-        box-shadow: 0 0.5rem 1rem rgba($color: $color-black, $alpha: 0.15);
-        transform: translateY(0);
-    }
+  &:active {
+    box-shadow: 0 0.5rem 1rem rgba($color: $color-black, $alpha: 0.15);
+    transform: translateY(0);
+  }
 }

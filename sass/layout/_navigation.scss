@@ -1,0 +1,85 @@
+.navigation {
+  &__checkbox {
+    display: none;
+  }
+
+  &__button {
+    background-color: $color-white;
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 6rem;
+    right: 6rem;
+    z-index: 1002;
+  }
+
+  &__background {
+    /*//* it starts slightly smaller than the white menu button that sits above it when it's shrunk down */
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    background-image: radial-gradient(
+      $color-primary-light,
+      $color-primary-dark
+    );
+    z-index: 1000;
+
+    transform: scale(70);
+  }
+
+  /*//* covers the entire viewport so that the nav list child can be centered on the screen, and 'pos: fixed' so that it remains there even when scrolling.  z-index on top of the background, but below the menu button */
+  &__nav {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+  }
+
+  &__list {
+    @include pos-abs-center;
+    list-style: none;
+    text-align: center;
+  }
+
+  &__item {
+    margin: 1rem;
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      /*//* <a> is an 'inline' element, so 'inline-block' is needed to provide padding and animate translateX */
+      display: inline-block;
+      font-size: 3rem;
+      font-weight: 300;
+      padding: 1rem 2rem;
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+      background-image: linear-gradient(
+        120deg,
+        transparent 0%,
+        transparent 50%,
+        $color-white 50%
+      );
+      background-size: 220%;
+      background-repeat: no-repeat;
+      transition: all 0.4s;
+    }
+
+    &:hover,
+    &:active {
+      background-position: 100% 60%;
+      color: $color-primary;
+      transform: translateX(1rem);
+      /*//* prevents link outline when tab key is used */
+      outline: none;
+    }
+  }
+}

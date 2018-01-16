@@ -1,54 +1,61 @@
 .footer {
-    background-color: $color-grey-dark;
-    padding: 10rem 0;
-    font-size: 1.4rem;
-    color: $text-grey-dark-2;
-}
-.footer__logo-box {
+  background-color: $color-grey-dark;
+  padding: 10rem 0;
+  font-size: 1.4rem;
+  color: $text-grey-dark-2;
+
+  &__logo-box {
     text-align: center;
     margin-bottom: 8rem;
-}
-.footer__logo {
+  }
+
+  &__logo {
     width: 15rem;
     height: auto;
-}
-.footer__navigation {
+  }
+
+  &__navigation {
     border-top: 1px solid $color-grey-med;
     padding-top: 2rem;
     display: inline-block;
-}
-.footer__list {
+  }
+
+  &__list {
     list-style: none;
-}
-.footer__item {
+  }
+
+  &__item {
     display: inline-block;
 
     &:not(:last-child) {
-        margin-right: 1.5rem;
+      margin-right: 1.5rem;
     }
-}
-.footer__link {
+  }
+
+  &__link {
     &:link,
     &:visited {
-        color: $text-grey-light;
-        background-color: $color-grey-dark;
-        text-decoration: none;
-        text-transform: uppercase;
-        display: inline-block;
-        transition: all .2s;
+      color: $text-grey-light;
+      background-color: $color-grey-dark;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-block;
+      transition: all 0.2s;
     }
 
     &:hover,
     &:active {
-        color: $color-primary;
-        box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: .4);
-        transform: rotate(5deg) scale(1.3);
+      color: $color-primary;
+      box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: 0.4);
+      transform: rotate(5deg) scale(1.3);
     }
-}
-.footer__copyright {
+  }
+
+  &__copyright {
     border-top: 1px solid $color-grey-med;
     padding-top: 2rem;
     display: inline-block;
     width: 90%;
     float: right;
-} 
+  }
+}

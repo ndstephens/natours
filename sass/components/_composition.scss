@@ -1,43 +1,44 @@
 /*//?----------  3 IMAGES IN ABOUT SECTION  ----------*/
 
 .composition {
-    position: relative;
-    
-    /*//* when hovering over the '.composition' element (parent of the 3 photos) AND you're not the photo that is currently being hovered over, then scale down */
-    &:hover .composition__photo:not(:hover) {
-        transform: scale(.95);
-    }
-}
-.composition__photo {
+  position: relative;
+
+  /*//* when hovering over the '.composition' element (parent of the 3 photos) AND you're not the photo that is currently being hovered over, then scale down */
+  &:hover .composition__photo:not(:hover) {
+    transform: scale(0.95);
+  }
+
+  &__photo {
     width: 55%;
-    box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: .4);
+    box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.4);
     border-radius: 2px;
     position: absolute;
     z-index: 1;
     /*//* can stretch outline out from content */
     outline-offset: 2rem;
     /*//* specified each transition prop, b/c wanted to omit transitioning the z-index change (looked weird) */
-    transition: transform .2s, box-shadow .2s, outline .2s;
+    transition: transform 0.2s, box-shadow 0.2s, outline 0.2s;
 
     &:hover {
-        /*//* works similar to border, but doesn't add to box size and can be offset */
-        outline: 1.5rem solid $color-primary;
-        transform: scale(1.05) translateY(-.5rem);
-        /*//* slightly grow the box-shadow, as would naturally happen when image grows */
-        box-shadow: 0 2.5 4rem rgba($color: $color-black, $alpha: .5);
-        z-index: 10;
+      /*//* works similar to border, but doesn't add to box size and can be offset */
+      outline: 1.5rem solid $color-primary;
+      transform: scale(1.05) translateY(-0.5rem);
+      /*//* slightly grow the box-shadow, as would naturally happen when image grows */
+      box-shadow: 0 2.5 4rem rgba($color: $color-black, $alpha: 0.5);
+      z-index: 10;
     }
 
-}
-.composition__photo--p1 {
-    left: 0;
-    top: -2rem;
-}
-.composition__photo--p2 {
-    right: 0;
-    top: 2rem;
-}
-.composition__photo--p3 {
-    left: 20%;
-    top: 10rem;
+    &--p1 {
+      left: 0;
+      top: -2rem;
+    }
+    &--p2 {
+      right: 0;
+      top: 2rem;
+    }
+    &--p3 {
+      left: 20%;
+      top: 10rem;
+    }
+  }
 }

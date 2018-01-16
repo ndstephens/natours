@@ -1,11 +1,11 @@
 .form {
-}
-.form__group {
+  &__group {
     &:not(:last-child) {
-        margin-bottom: 2rem;
+      margin-bottom: 2rem;
     }
-}
-.form__input {
+  }
+
+  &__input {
     font-size: 1.5rem;
     /*//* inputs by default use the browser's default font and color.  don't need to set them explicitly, can simply use 'inherit' */
     font-family: inherit;
@@ -18,32 +18,33 @@
     border-bottom: 3px solid transparent;
     width: 90%;
     display: block;
-    transition: all .3s;
+    transition: all 0.3s;
 
     &:focus {
-        outline: none;
-        /*//* adding the 'box-shadow' and 'border-bottom' are nice for styling, but whenever you remove the default focus outlining you should add some sort of styling for screen reader accessibility */
-        box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: 0.1);
-        border-bottom: 3px solid $color-primary;
+      outline: none;
+      /*//* adding the 'box-shadow' and 'border-bottom' are nice for styling, but whenever you remove the default focus outlining you should add some sort of styling for screen reader accessibility */
+      box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: 0.1);
+      border-bottom: 3px solid $color-primary;
 
-        /*//* since the input elements have the 'required' attribute included, while the input field is invalid then bottom-border will be orange (color-secondary-dark).  once it's valid, the color will change to green (color-primary) */
-        &:invalid {
-            border-bottom: 3px solid $color-secondary-dark;
-        }
+      /*//* since the input elements have the 'required' attribute included, while the input field is invalid then bottom-border will be orange (color-secondary-dark).  once it's valid, the color will change to green (color-primary) */
+      &:invalid {
+        border-bottom: 3px solid $color-secondary-dark;
+      }
     }
 
     /*//* color the placeholder text */
     &::-webkit-input-placeholder {
-        color: $text-grey-dark-2;
+      color: $text-grey-dark-2;
     }
 
     /*//* the form label is hidden when the placeholder is visual.  when the user starts typing, the label element drops down and becomes visible */
     &:placeholder-shown + .form__label {
-        opacity: 0;
-        transform: translateY(-4.5rem);
+      opacity: 0;
+      transform: translateY(-4.5rem);
     }
-}
-.form__label {
+  }
+
+  &__label {
     font-size: 1.5rem;
     color: $text-grey-dark-2;
     margin-left: 2rem;
@@ -53,29 +54,32 @@
     opacity: 1;
     transform: translateY(0);
     transition: all 0.5s;
-}
+  }
 
-.form__radio-group {
+  &__radio-group {
     width: 49%;
     display: inline-block;
-}
-/*//* this is the default radio button the browser supplies */
-.form__radio-input {
+  }
+
+  /*//* this is the default radio button the browser supplies */
+  &__radio-input {
     /*//* 'display: none' completely removes the element (vs using 'opacity' or 'visibility') */
     display: none;
     /*//* when it's checked (by clicking on the label, or fake radio button, since it's linked to the radio button) then make the inner dot of the fake radio button visible */
     &:checked + .form__radio-label > .form__radio-button::after {
-        opacity: 1;
+      opacity: 1;
     }
-}
-.form__radio-label {
+  }
+
+  &__radio-label {
     font-size: $default-font-size;
     cursor: pointer;
     position: relative;
     padding-left: 3.5rem;
-}
-/*//* the fake radio button */
-.form__radio-button {
+  }
+
+  /*//* the fake radio button */
+  &__radio-button {
     height: 3rem;
     width: 3rem;
     border: 5px solid $color-primary;
@@ -83,20 +87,18 @@
     display: inline-block;
     position: absolute;
     left: 0;
-    top: -.4rem;
+    top: -0.4rem;
     /*//* its inner dot or 'checked' indicator */
     &::after {
-        content: "";
-        display: block;
-        height: 1.3rem;
-        width: 1.3rem;
-        border-radius: 50%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: $color-primary;
-        opacity: 0;
-        transition: opacity .3s;
+      content: "";
+      @include pos-abs-center;
+      display: block;
+      height: 1.3rem;
+      width: 1.3rem;
+      border-radius: 50%;
+      background-color: $color-primary;
+      opacity: 0;
+      transition: opacity 0.3s;
     }
+  }
 }
