@@ -7,9 +7,41 @@
   }
 }
 
+/*//?----------  POSITIONING  ----------*/
 @mixin pos-abs-center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/*//?----------  MEDIA QUERIES  ----------*/
+/*//* media query sizes, in relative units, aren't effected by our base font-size definition set in the html selector (which is currently 62.5% of the browser's default 16px setting, or 10px).  therefore for 600px i can't write 60em.  it needs to be in relation to the browser default of 16px so that when/if the user changes the browser default the media query will adjust.  'em's are needed for media queries b/c 'rem's sometimes work weird */
+
+/*//* 600px (600/16 = 37.5) */
+@mixin mq-phone {
+  @media (max-width: 37.5em) {
+    @content;
+  }
+}
+
+/*//* 900px */
+@mixin mq-tab-port {
+  @media (max-width: 56.25em) {
+    @content;
+  }
+}
+
+/*//* 1200px */
+@mixin mq-tab-land {
+  @media (max-width: 75em) {
+    @content;
+  }
+}
+
+/*//* 1800 px */
+@mixin mq-big-desktop {
+  @media (min-width: 112.5em) {
+    @content;
+  }
 }

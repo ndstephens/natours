@@ -2,19 +2,31 @@
 *,
 *::after,
 *::before {
-    margin: 0;
-    padding: 0;
-    /*//* all selectors now inherit 'box-sizing: border-box' from 'body' */
-    box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  /*//* all selectors now inherit 'box-sizing: border-box' from 'body' */
+  box-sizing: inherit;
 }
 
 html {
-    /*//* want this at '10px' for easy rem calculations, however shouldn't hard-code b/c would override user's browser settings.  standard setting is 16px.  10/16 = 0.625 */
-    /*//* Defines what '1rem' is */
-    font-size: 62.5%;
+  /*//* want this at '10px' for easy rem calculations, however shouldn't hard-code b/c would override user's browser settings.  default setting is 16px.  10/16 = 0.625 */
+  /*//* Defines what '1rem' is */
+  /*//* all sizing throughout the site is done in 'rem's, so this 'font-size' property controls sizing throughout the site.  by changing this value in media-queries we also can easily effect overall sizing throughout site */
+  font-size: 62.5%; // 1rem = 10px
+
+  /*//* ORDER MATTERS...for 'max-width' mq's you put the largest one first */
+  @include mq-tab-land {
+    font-size: 56.25%; // 1rem = 9px
+  }
+  @include mq-tab-port {
+    font-size: 50%; // 1rem = 8px
+  }
+  @include mq-big-desktop {
+    font-size: 75%; // 1rem = 12px
+  }
 }
 
 body {
-    padding: 3rem;
-    box-sizing: border-box;
+  padding: 3rem;
+  box-sizing: border-box;
 }

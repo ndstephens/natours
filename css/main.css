@@ -1,4 +1,11 @@
 /*//?----------  CLEARFIX  ----------*/
+/*//?----------  POSITIONING  ----------*/
+/*//?----------  MEDIA QUERIES  ----------*/
+/*//* media query sizes, in relative units, aren't effected by our base font-size definition set in the html selector (which is currently 62.5% of the browser's default 16px setting, or 10px).  therefore for 600px i can't write 60em.  it needs to be in relation to the browser default of 16px so that when/if the user changes the browser default the media query will adjust.  'em's are needed for media queries b/c 'rem's sometimes work weird */
+/*//* 600px (600/16 = 37.5) */
+/*//* 900px */
+/*//* 1200px */
+/*//* 1800 px */
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -41,9 +48,20 @@
   box-sizing: inherit; }
 
 html {
-  /*//* want this at '10px' for easy rem calculations, however shouldn't hard-code b/c would override user's browser settings.  standard setting is 16px.  10/16 = 0.625 */
+  /*//* want this at '10px' for easy rem calculations, however shouldn't hard-code b/c would override user's browser settings.  default setting is 16px.  10/16 = 0.625 */
   /*//* Defines what '1rem' is */
-  font-size: 62.5%; }
+  /*//* all sizing throughout the site is done in 'rem's, so this 'font-size' property controls sizing throughout the site.  by changing this value in media-queries we also can easily effect overall sizing throughout site */
+  font-size: 62.5%;
+  /*//* ORDER MATTERS...for 'max-width' mq's you put the largest one first */ }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
   padding: 3rem;
