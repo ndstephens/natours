@@ -456,7 +456,29 @@ body {
   top: 0;
   left: 0;
   z-index: 2000;
-  background-color: rgba(0, 0, 0, 0.8); }
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+  /*//* this element also has the id of 'popup'.  the 'Book Now' buttons on the 3 tour cards have an href of '#popup', so when they're clicked this element is the target.  so we can use the pseudo-class of ':target' to control this element when it's active target of a button click. when it's no longer the target (using a button to close it and activate another target ie '#section-tours' then it'll go back to its initial state */ }
+  .popup:target {
+    opacity: 1;
+    visibility: visible; }
+    .popup:target .popup__content {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1; }
+  .popup__close:link, .popup__close:visited {
+    color: #777;
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    font-size: 3rem;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1;
+    transition: color 0.2s; }
+  .popup__close:hover {
+    color: #55c57a; }
   .popup__content {
     position: absolute;
     top: 50%;
@@ -468,7 +490,12 @@ body {
     /*//* interesting technique of using a parent table with two children table-cells.  then can use 'vertical-align: middle' to on a cell in relation to the other cell.  would probably used flexbox or grid in the future */
     display: table;
     /*//* the images were overlapping the border-radius, so need 'overflow: hidden' */
-    overflow: hidden; }
+    overflow: hidden;
+    /*//* starts out small and hidden so it grows when displayed with the ':target' pseudo class above ('transform' is already used above in the mixin, so using it again with only 'scale' would overwrite 'translate' used in the mixin, so it needs to be included here as well)  ALSO, order matters.  'scale' needs to be second or it doesn't scale from the center */
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0;
+    /*//* add a short delay (0.2s) so that the screen starts going dark first (from the parent element '.popup' transition) before the content element ('.popup__content') begins its transition effect */
+    transition: all 0.5s 0.2s; }
   .popup__left {
     width: 33.333333%;
     display: table-cell; }
