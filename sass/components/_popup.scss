@@ -48,6 +48,7 @@
     border-radius: $border-radius * 2;
     /*//* interesting technique of using a parent table with two children table-cells.  then can use 'vertical-align: middle' to on a cell in relation to the other cell.  would probably used flexbox or grid in the future */
     display: table;
+
     /*//* the images were overlapping the border-radius, so need 'overflow: hidden' */
     overflow: hidden;
 
@@ -56,11 +57,33 @@
     opacity: 0;
     /*//* add a short delay (0.2s) so that the screen starts going dark first (from the parent element '.popup' transition) before the content element ('.popup__content') begins its transition effect */
     transition: all 0.5s 0.2s;
+
+    @include mq-tab-port {
+      display: block;
+      max-height: 95vh;
+      overflow: scroll;
+    }
+    @include mq-phone {
+      width: 90%;
+      max-height: 95vh;
+      overflow: scroll;
+    }
   }
 
   &__left {
     width: 33.333333%;
     display: table-cell;
+
+    @include mq-tab-port {
+      display: block;
+      width: calc(100% - 10rem);
+      // padding: 3rem 5rem 0;
+      margin: 3rem 5rem 0;
+      text-align: center;
+    }
+    @include mq-phone {
+      display: none;
+    }
   }
 
   &__right {
@@ -68,11 +91,31 @@
     display: table-cell;
     vertical-align: middle;
     padding: 3rem 5rem;
+
+    @include mq-tab-port {
+      width: auto;
+      display: block;
+      & .btn.btn--green {
+        display: table;
+        margin: 0 auto;
+      }
+    }
+    @include mq-phone {
+      & .heading-secondary {
+        display: none;
+      }
+    }
   }
 
   &__img {
     display: block;
     width: 100%;
+
+    @include mq-tab-port {
+      &:first-of-type {
+        display: none;
+      }
+    }
   }
 
   &__text {
@@ -85,5 +128,9 @@
     column-rule: 1px solid $color-grey-light-2;
     /*//* add hyphens to wrapped text */
     hyphens: auto;
+
+    @include mq-phone {
+      column-count: 1;
+    }
   }
 }

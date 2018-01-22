@@ -23,6 +23,11 @@ body {
       margin-right: -3.5rem;
       /*//* 'animation-fill-mode: backwards' uses animation's starting values during the delay period (keeps element hidden / opacity at 0 before animation starts) */
       animation: moveInLeft 1000ms 200ms backwards;
+
+      @include mq-phone {
+        letter-spacing: 1rem;
+        font-size: 5rem;
+      }
     }
 
     &--sub {
@@ -32,10 +37,15 @@ body {
       letter-spacing: 1.75rem;
       margin-right: -1.75rem;
       animation: moveInRight 1000ms 900ms backwards;
+
+      @include mq-phone {
+        letter-spacing: 0.5rem;
+      }
     }
   }
 
   &-secondary {
+    max-width: 90%;
     font-size: 3.5rem;
     text-transform: uppercase;
     font-weight: 700;
@@ -52,6 +62,13 @@ body {
     letter-spacing: 0.2rem;
     transition: all 0.2s;
 
+    // @include mq-tab-port {
+    //   font-size: 3rem;
+    // }
+    @include mq-phone {
+      font-size: 3rem;
+    }
+
     &:hover {
       transform: skewY(2deg) skewX(5deg) scale(1.1);
       text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
@@ -62,11 +79,19 @@ body {
     font-size: $default-font-size;
     font-weight: 700;
     text-transform: uppercase;
+
+    @include mq-tab-port {
+      font-size: $default-font-size + 1rem;
+    }
   }
 }
 
 .paragraph {
   font-size: $default-font-size;
+
+  @include mq-tab-port {
+    font-size: 2.5rem;
+  }
 
   &:not(:last-child) {
     margin-bottom: 3rem;

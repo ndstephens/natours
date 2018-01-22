@@ -34,27 +34,27 @@
     &--back {
       /*//* needs to start out already rotated around */
       transform: rotateY(180deg);
-    }
-    &--back-1 {
-      background-image: linear-gradient(
-        to right bottom,
-        $color-secondary-light,
-        $color-secondary-dark
-      );
-    }
-    &--back-2 {
-      background-image: linear-gradient(
-        to right bottom,
-        $color-primary-light,
-        $color-primary-dark
-      );
-    }
-    &--back-3 {
-      background-image: linear-gradient(
-        to right bottom,
-        $color-tertiary-light,
-        $color-tertiary-dark
-      );
+      &-1 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        );
+      }
+      &-2 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
+      &-3 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        );
+      }
     }
   }
 
@@ -111,27 +111,27 @@
       /*//* the '.card__heading' width of 75% and this padding cause the span's content box to break into 2 separate lines.  using 'box-decoration-break: clone' gives each separate content box the same padding (to understand effect just disable it in DevTools and see the effect).  in future, maybe just use 2 separate spans. */
       -webkit-box-decoration-break: clone;
       box-decoration-break: clone;
-    }
-    &-span--1 {
-      background-image: linear-gradient(
-        to right bottom,
-        rgba($color-secondary-light, 0.85),
-        rgba($color-secondary-dark, 0.85)
-      );
-    }
-    &-span--2 {
-      background-image: linear-gradient(
-        to right bottom,
-        rgba($color-primary-light, 0.85),
-        rgba($color-primary-dark, 0.85)
-      );
-    }
-    &-span--3 {
-      background-image: linear-gradient(
-        to right bottom,
-        rgba($color-tertiary-light, 0.85),
-        rgba($color-tertiary-dark, 0.85)
-      );
+      &--1 {
+        background-image: linear-gradient(
+          to right bottom,
+          rgba($color-secondary-light, 0.85),
+          rgba($color-secondary-dark, 0.85)
+        );
+      }
+      &--2 {
+        background-image: linear-gradient(
+          to right bottom,
+          rgba($color-primary-light, 0.85),
+          rgba($color-primary-dark, 0.85)
+        );
+      }
+      &--3 {
+        background-image: linear-gradient(
+          to right bottom,
+          rgba($color-tertiary-light, 0.85),
+          rgba($color-tertiary-dark, 0.85)
+        );
+      }
     }
   }
 
@@ -175,5 +175,66 @@
   &__price-value {
     font-size: 6rem;
     font-weight: 100;
+  }
+
+  //
+  //
+  //
+  /*//?----------  MEDIA QUERY FOR TABLET PORTRAIT AND PHONE  ----------*/
+  @include mq-tab-port {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: $border-radius;
+    overflow: hidden;
+    background-color: $color-white;
+    box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.15);
+
+    &:hover .card__side--front {
+      transform: none;
+    }
+
+    &__side {
+      height: auto;
+      position: relative;
+      box-shadow: none;
+
+      &--back {
+        transform: none;
+        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    &__heading {
+      font-size: 3.5rem;
+    }
+
+    &__details {
+      ul {
+        li {
+          font-size: 2.5rem;
+        }
+      }
+    }
+    /*//?----------  BACK SIDE  ----------*/
+    &__cta {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      transform: none;
+      padding: 7rem 4rem 4rem;
+    }
+
+    &__price-box {
+      margin-bottom: 3rem;
+    }
+
+    &__price-value {
+      font-size: 6rem;
+    }
+  }
+  @include mq-phone {
+    width: 100%;
   }
 }

@@ -52,7 +52,7 @@ html {
   /*//* Defines what '1rem' is */
   /*//* all sizing throughout the site is done in 'rem's, so this 'font-size' property controls sizing throughout the site.  by changing this value in media-queries we also can easily effect overall sizing throughout site */
   font-size: 62.5%;
-  /*//* ORDER MATTERS...for 'max-width' mq's you put the largest one first */ }
+  /*//* ORDER MATTERS...for 'max-width' mq's you put the largest one first (the more specific one last) */ }
   @media (max-width: 75em) {
     html {
       font-size: 56.25%; } }
@@ -64,8 +64,11 @@ html {
       font-size: 75%; } }
 
 body {
-  padding: 3rem;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  padding: 3rem; }
+  @media (max-width: 56.25em) {
+    body {
+      padding: 0; } }
 
 body {
   font-family: "Lato", sans-serif;
@@ -89,6 +92,10 @@ body {
     margin-right: -3.5rem;
     /*//* 'animation-fill-mode: backwards' uses animation's starting values during the delay period (keeps element hidden / opacity at 0 before animation starts) */
     animation: moveInLeft 1000ms 200ms backwards; }
+    @media (max-width: 37.5em) {
+      .heading-primary--main {
+        letter-spacing: 1rem;
+        font-size: 5rem; } }
   .heading-primary--sub {
     display: block;
     font-size: 2rem;
@@ -96,8 +103,12 @@ body {
     letter-spacing: 1.75rem;
     margin-right: -1.75rem;
     animation: moveInRight 1000ms 900ms backwards; }
+    @media (max-width: 37.5em) {
+      .heading-primary--sub {
+        letter-spacing: 0.5rem; } }
 
 .heading-secondary {
+  max-width: 90%;
   font-size: 3.5rem;
   text-transform: uppercase;
   font-weight: 700;
@@ -109,6 +120,9 @@ body {
   color: transparent;
   letter-spacing: 0.2rem;
   transition: all 0.2s; }
+  @media (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 3rem; } }
   .heading-secondary:hover {
     transform: skewY(2deg) skewX(5deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
@@ -117,9 +131,15 @@ body {
   font-size: 1.6rem;
   font-weight: 700;
   text-transform: uppercase; }
+  @media (max-width: 56.25em) {
+    .heading-tertiary {
+      font-size: 2.6rem; } }
 
 .paragraph {
   font-size: 1.6rem; }
+  @media (max-width: 56.25em) {
+    .paragraph {
+      font-size: 2.5rem; } }
   .paragraph:not(:last-child) {
     margin-bottom: 3rem; }
 
@@ -133,9 +153,15 @@ body {
 
 .u-margin-bottom-medium {
   margin-bottom: 4rem !important; }
+  @media (max-width: 56.25em) {
+    .u-margin-bottom-medium {
+      margin-bottom: 3rem !important; } }
 
 .u-margin-bottom-big {
   margin-bottom: 8rem !important; }
+  @media (max-width: 56.25em) {
+    .u-margin-bottom-big {
+      margin-bottom: 5rem !important; } }
 
 .u-margin-top-big {
   margin-top: 8rem !important; }
@@ -238,7 +264,8 @@ body {
   position: relative;
   height: 50rem;
   /*//?----------  FRONT SIDE  ----------*/
-  /*//?----------  BACK SIDE  ----------*/ }
+  /*//?----------  BACK SIDE  ----------*/
+  /*//?----------  MEDIA QUERY FOR TABLET PORTRAIT AND PHONE  ----------*/ }
   .card:hover .card__side--front {
     transform: rotateY(-180deg); }
   .card:hover .card__side--back {
@@ -262,12 +289,12 @@ body {
     .card__side--back {
       /*//* needs to start out already rotated around */
       transform: rotateY(180deg); }
-    .card__side--back-1 {
-      background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
-    .card__side--back-2 {
-      background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
-    .card__side--back-3 {
-      background-image: linear-gradient(to right bottom, #2998ff, #5643fa); }
+      .card__side--back-1 {
+        background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
+      .card__side--back-2 {
+        background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+      .card__side--back-3 {
+        background-image: linear-gradient(to right bottom, #2998ff, #5643fa); }
   .card__picture {
     background-size: cover;
     /*//* can experiment with different modes in Dev Tools for instant feedback */
@@ -298,12 +325,12 @@ body {
       /*//* the '.card__heading' width of 75% and this padding cause the span's content box to break into 2 separate lines.  using 'box-decoration-break: clone' gives each separate content box the same padding (to understand effect just disable it in DevTools and see the effect).  in future, maybe just use 2 separate spans. */
       -webkit-box-decoration-break: clone;
       box-decoration-break: clone; }
-    .card__heading-span--1 {
-      background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); }
-    .card__heading-span--2 {
-      background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.85), rgba(40, 180, 133, 0.85)); }
-    .card__heading-span--3 {
-      background-image: linear-gradient(to right bottom, rgba(41, 152, 255, 0.85), rgba(86, 67, 250, 0.85)); }
+      .card__heading-span--1 {
+        background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); }
+      .card__heading-span--2 {
+        background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.85), rgba(40, 180, 133, 0.85)); }
+      .card__heading-span--3 {
+        background-image: linear-gradient(to right bottom, rgba(41, 152, 255, 0.85), rgba(86, 67, 250, 0.85)); }
   .card__details {
     padding: 2rem; }
     .card__details ul {
@@ -332,6 +359,43 @@ body {
   .card__price-value {
     font-size: 6rem;
     font-weight: 100; }
+  @media (max-width: 56.25em) {
+    .card {
+      width: 80%;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 3px;
+      overflow: hidden;
+      background-color: #fff;
+      box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+      /*//?----------  BACK SIDE  ----------*/ }
+      .card:hover .card__side--front {
+        transform: none; }
+      .card__side {
+        height: auto;
+        position: relative;
+        box-shadow: none; }
+        .card__side--back {
+          transform: none;
+          clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%); }
+      .card__heading {
+        font-size: 3.5rem; }
+      .card__details ul li {
+        font-size: 2.5rem; }
+      .card__cta {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: none;
+        padding: 7rem 4rem 4rem; }
+      .card__price-box {
+        margin-bottom: 3rem; }
+      .card__price-value {
+        font-size: 6rem; } }
+  @media (max-width: 37.5em) {
+    .card {
+      width: 100%; } }
 
 /*//?----------  3 IMAGES IN ABOUT SECTION  ----------*/
 .composition {
@@ -349,13 +413,12 @@ body {
     outline-offset: 2rem;
     /*//* specified each transition prop, b/c wanted to omit transitioning the z-index change (looked weird) */
     transition: transform 0.2s, box-shadow 0.2s, outline 0.2s; }
-    .composition__photo:hover {
-      /*//* works similar to border, but doesn't add to box size and can be offset */
-      outline: 1.5rem solid #55c57a;
-      transform: scale(1.05) translateY(-0.5rem);
-      /*//* slightly grow the box-shadow, as would naturally happen when image grows */
-      box-shadow: 0 2.5 4rem rgba(0, 0, 0, 0.5);
-      z-index: 10; }
+    @media (max-width: 56.25em) {
+      .composition__photo {
+        width: 60%; } }
+    @media (max-width: 37.5em) {
+      .composition__photo {
+        outline-offset: 1rem; } }
     .composition__photo--p1 {
       left: 0;
       top: -2rem; }
@@ -365,6 +428,16 @@ body {
     .composition__photo--p3 {
       left: 20%;
       top: 10rem; }
+    .composition__photo:hover {
+      /*//* works similar to border, but doesn't add to box size and can be offset */
+      outline: 1.5rem solid #55c57a;
+      transform: scale(1.05) translateY(-0.5rem);
+      /*//* slightly grow the box-shadow, as would naturally happen when image grows */
+      box-shadow: 0 2.5 4rem rgba(0, 0, 0, 0.5);
+      z-index: 10; }
+      @media (max-width: 37.5em) {
+        .composition__photo:hover {
+          outline-width: 1rem; } }
 
 .feature-box {
   background-color: rgba(255, 255, 255, 0.8);
@@ -374,8 +447,19 @@ body {
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   transition: all 0.3s; }
+  @media (max-width: 56.25em) {
+    .feature-box {
+      width: 80%;
+      margin: 0 auto;
+      font-size: 2.5rem; } }
+  @media (max-width: 37.5em) {
+    .feature-box {
+      width: 100%; } }
   .feature-box:hover {
     transform: translateY(-1.5rem) scale(1.03); }
+    @media (max-width: 56.25em) {
+      .feature-box:hover {
+        transform: none; } }
   .feature-box__icon {
     font-size: 6rem;
     margin-bottom: 0.5rem;
@@ -389,8 +473,18 @@ body {
 .form {
   /*//* this is the default radio button the browser supplies */
   /*//* the fake radio button */ }
+  @media (max-width: 56.25em) {
+    .form .heading-secondary {
+      max-width: 100%; } }
+  @media (max-width: 37.5em) {
+    .form .heading-secondary {
+      font-size: 2.7rem; } }
   .form__group:not(:last-child) {
     margin-bottom: 2rem; }
+  @media (max-width: 37.5em) {
+    .form__group .btn.btn--green {
+      display: block;
+      margin: 0 auto; } }
   .form__input {
     font-size: 1.5rem;
     /*//* inputs by default use the browser's default font and color.  don't need to set them explicitly, can simply use 'inherit' */
@@ -407,6 +501,9 @@ body {
     transition: all 0.3s;
     /*//* color the placeholder text */
     /*//* the form label is hidden when the placeholder is visual.  when the user starts typing, the label element drops down and becomes visible */ }
+    @media (max-width: 37.5em) {
+      .form__input {
+        width: 100%; } }
     .form__input:focus {
       outline: none;
       /*//* adding the 'box-shadow' and 'border-bottom' are nice for styling, but whenever you remove the default focus outlining you should add some sort of styling for screen reader accessibility */
@@ -432,6 +529,10 @@ body {
   .form__radio-group {
     width: 49%;
     display: inline-block; }
+    @media (max-width: 37.5em) {
+      .form__radio-group {
+        width: 100%;
+        margin-bottom: 2rem; } }
   .form__radio-input {
     /*//* 'display: none' completely removes the element (vs using 'opacity' or 'visibility') */
     display: none;
@@ -443,6 +544,9 @@ body {
     cursor: pointer;
     position: relative;
     padding-left: 3.5rem; }
+    @media (max-width: 37.5em) {
+      .form__radio-label {
+        font-size: 2rem; } }
   .form__radio-button {
     height: 3rem;
     width: 3rem;
@@ -514,17 +618,49 @@ body {
     opacity: 0;
     /*//* add a short delay (0.2s) so that the screen starts going dark first (from the parent element '.popup' transition) before the content element ('.popup__content') begins its transition effect */
     transition: all 0.5s 0.2s; }
+    @media (max-width: 56.25em) {
+      .popup__content {
+        display: block;
+        max-height: 95vh;
+        overflow: scroll; } }
+    @media (max-width: 37.5em) {
+      .popup__content {
+        width: 90%;
+        max-height: 95vh;
+        overflow: scroll; } }
   .popup__left {
     width: 33.333333%;
     display: table-cell; }
+    @media (max-width: 56.25em) {
+      .popup__left {
+        display: block;
+        width: calc(100% - 10rem);
+        margin: 3rem 5rem 0;
+        text-align: center; } }
+    @media (max-width: 37.5em) {
+      .popup__left {
+        display: none; } }
   .popup__right {
     width: 66.666667%;
     display: table-cell;
     vertical-align: middle;
     padding: 3rem 5rem; }
+    @media (max-width: 56.25em) {
+      .popup__right {
+        width: auto;
+        display: block; }
+        .popup__right .btn.btn--green {
+          display: table;
+          margin: 0 auto; } }
+    @media (max-width: 37.5em) {
+      .popup__right .heading-secondary {
+        display: none; } }
   .popup__img {
     display: block;
     width: 100%; }
+    @media (max-width: 56.25em) {
+      .popup__img:first-of-type {
+        display: none; } }
   .popup__text {
     font-size: 1.4rem;
     margin-bottom: 4rem;
@@ -534,6 +670,9 @@ body {
     column-rule: 1px solid #eee;
     /*//* add hyphens to wrapped text */
     hyphens: auto; }
+    @media (max-width: 37.5em) {
+      .popup__text {
+        column-count: 1; } }
 
 .story {
   width: 75%;
@@ -544,6 +683,14 @@ body {
   padding: 6rem 4rem 6rem 9rem;
   font-size: 1.6rem;
   transform: skewX(-12deg); }
+  @media (max-width: 56.25em) {
+    .story {
+      width: 100%; } }
+  @media (max-width: 37.5em) {
+    .story {
+      padding: 5rem 4rem;
+      text-align: center;
+      transform: none; } }
   .story:hover .story__caption {
     opacity: 1;
     transform: translate(-50%, -50%); }
@@ -563,6 +710,11 @@ body {
     transform: translateX(-3rem) skewX(12deg);
     position: relative;
     overflow: hidden; }
+    @media (max-width: 37.5em) {
+      .story__shape {
+        float: none;
+        margin: 0 auto 1rem;
+        transform: none; } }
   .story__img {
     height: 100%;
     transform: translateX(-3.7rem) scale(1.3);
@@ -583,15 +735,27 @@ body {
   .story__text {
     transform: skewX(12deg);
     word-spacing: 0.15rem; }
+    @media (max-width: 56.25em) {
+      .story__text p {
+        font-size: 2rem; } }
+    @media (max-width: 37.5em) {
+      .story__text {
+        transform: none; } }
 
 .footer {
   background-color: #333;
   padding: 10rem 0;
   font-size: 1.4rem;
   color: #999; }
+  @media (max-width: 56.25em) {
+    .footer {
+      padding: 8rem 0; } }
   .footer__logo-box {
     text-align: center;
     margin-bottom: 8rem; }
+    @media (max-width: 56.25em) {
+      .footer__logo-box {
+        margin-bottom: 6rem; } }
   .footer__logo {
     width: 15rem;
     height: auto; }
@@ -599,6 +763,10 @@ body {
     border-top: 1px solid #999;
     padding-top: 2rem;
     display: inline-block; }
+    @media (max-width: 56.25em) {
+      .footer__navigation {
+        width: 100%;
+        text-align: center; } }
   .footer__list {
     list-style: none; }
   .footer__item {
@@ -622,6 +790,10 @@ body {
     display: inline-block;
     width: 90%;
     float: right; }
+    @media (max-width: 56.25em) {
+      .footer__copyright {
+        width: 100%;
+        text-align: center; } }
 
 .row {
   max-width: 114rem;
@@ -629,9 +801,22 @@ body {
   margin: 0 auto;
   /*//* all rows will include columns that are floated, which therefore need to be cleared */
   /*//* ATTRIBUTE SELECTOR!!!! */
-  /*//* select all elements with a class of "col-..." */ }
+  /*//* select all elements with a class of "col-..." */
+  /*//* could also use a 'starts with' selector like '[class^='col-']' */ }
+  @media (max-width: 75em) {
+    .row {
+      max-width: 95%; } }
+  @media (max-width: 56.25em) {
+    .row {
+      max-width: 80%; } }
+  @media (max-width: 37.5em) {
+    .row {
+      max-width: 85%; } }
   .row:not(:last-child) {
     margin-bottom: 8rem; }
+    @media (max-width: 56.25em) {
+      .row:not(:last-child) {
+        margin-bottom: 6rem; } }
   .row::after {
     content: "";
     display: table;
@@ -640,6 +825,13 @@ body {
     float: left; }
     .row [class*="col-"]:not(:last-child) {
       margin-right: 6rem; }
+      @media (max-width: 56.25em) {
+        .row [class*="col-"]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 6rem; } }
+    @media (max-width: 56.25em) {
+      .row [class*="col-"] {
+        width: 100% !important; } }
   .row .col-1-of-2 {
     /*//* in Sass calc() must include variables in a '' syntax */
     width: calc((100% - 6rem) / 2); }
@@ -655,15 +847,27 @@ body {
     width: calc( 3 * ((100% - (3 * 6rem)) / 4) + ( 2 * 6rem )); }
 
 .header {
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
-  /*//* don't forget to include 'background-size: cover' */
-  background-size: cover;
-  /*//* 'bg-pos: top' ensures the top of the image is the stationary point as the screen size changes (the bottom and sides will adjust instead)...or use 'center' */
-  background-position: top;
-  position: relative;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
+  height: 100vh;
+  background-color: #f7f7f7; }
+  .header__background {
+    height: 95vh;
+    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+    /*//* don't forget to include 'background-size: cover' */
+    background-size: cover;
+    /*//* 'bg-pos: top' ensures the top of the image is the stationary point as the screen size changes (the bottom and sides will adjust instead)...or use 'center' */
+    background-position: top;
+    position: relative;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
+    @media (max-width: 75em) {
+      .header__background {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%); } }
+    @media (max-width: 56.25em) {
+      .header__background {
+        height: 100vh;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%); } }
   .header__logo-box {
     position: absolute;
     top: 4rem;
@@ -708,6 +912,14 @@ body {
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
     text-align: center;
     cursor: pointer; }
+    @media (max-width: 56.25em) {
+      .navigation__button {
+        top: 4rem;
+        right: 4rem; } }
+    @media (max-width: 37.5em) {
+      .navigation__button {
+        top: 2.5rem;
+        right: 2.5rem; } }
     .navigation__button:hover .navigation__icon {
       background-color: transparent; }
     .navigation__button:hover .navigation__icon::before {
@@ -745,6 +957,14 @@ body {
     background-image: radial-gradient(#7ed56f, #28b485);
     z-index: 1000;
     transition: transform 0.5s; }
+    @media (max-width: 56.25em) {
+      .navigation__background {
+        top: 4.5rem;
+        right: 4.5rem; } }
+    @media (max-width: 37.5em) {
+      .navigation__background {
+        top: 3rem;
+        right: 3rem; } }
   .navigation__nav {
     height: 100vh;
     width: 100%;
@@ -763,6 +983,9 @@ body {
     transform: translate(-50%, -50%);
     list-style: none;
     text-align: center; }
+    @media (max-width: 37.5em) {
+      .navigation__list {
+        width: 90%; } }
   .navigation__item {
     margin: 1rem; }
   .navigation__link:link, .navigation__link:visited {
@@ -788,44 +1011,82 @@ body {
 /*//?----------  ABOUT SECTION  ----------*/
 .section-about {
   background-color: #f7f7f7;
-  padding: 25rem 0;
-  /*//* must vertically extend the bg-color into the clipped zone of the Header above (which is pure white).  The '.header' class is '95vh', then minus the '75vh' of the 'clip-path' property (in the '.header' class) equals '20vh'.  Make it negative to extend upwards into the '<header>' element */
-  margin-top: -20vh; }
+  padding: 3rem 0 15rem; }
+  @media (max-width: 56.25em) {
+    .section-about {
+      padding: 5rem 0 45rem; } }
+  @media (max-width: 37.5em) {
+    .section-about {
+      padding: 5rem 0 30rem; } }
 
 /*//?----------  FEATURES SECTION  ----------*/
 .section-features {
-  padding: 20rem 0;
-  /*//* compensates for background gap created by skew (exposes the pure white background) */
-  margin-top: -10rem;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/nat-4.jpg");
-  background-size: cover;
-  transform: skewY(-6deg);
-  /*//* select all DIRECT children of '.section-features' (which is the div.row that contains all the feature box columns) and remove the skew */ }
-  .section-features > * {
-    transform: skewY(6deg); }
+  background-color: #f7f7f7; }
+  .section-features__background {
+    padding: 20rem 0;
+    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/nat-4.jpg");
+    background-size: cover;
+    transform: skewY(-6deg);
+    /*//* select all DIRECT children of '.section-features' (which is the div.row that contains all the feature box columns) and remove the skew */ }
+    @media (max-width: 56.25em) {
+      .section-features__background {
+        padding: 15rem 0; } }
+    @media (max-width: 37.5em) {
+      .section-features__background {
+        padding: 10rem 0; } }
+    .section-features__background > * {
+      transform: skewY(6deg); }
 
 /*//?----------  TOURS SECTION  ----------*/
 .section-tours {
   background-color: #f7f7f7;
-  padding: 25rem 0 15rem;
-  margin-top: -10rem; }
+  padding: 15rem 0; }
+  @media (max-width: 56.25em) {
+    .section-tours {
+      padding: 10rem 0; } }
+  @media (max-width: 37.5em) {
+    .section-tours {
+      padding: 7.5rem 0 5rem; } }
 
 /*//?----------  STORIES SECTION  ----------*/
 .section-stories {
   padding: 15rem 0;
   position: relative; }
+  @media (max-width: 56.25em) {
+    .section-stories {
+      padding: 10rem 0; } }
+  @media (max-width: 37.5em) {
+    .section-stories {
+      padding: 5rem 0; } }
 
 /*//?----------  BOOKING SECTION  ----------*/
 .section-book {
   padding: 15rem 0;
   background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+  @media (max-width: 56.25em) {
+    .section-book {
+      padding: 10rem 0; } }
 
 .book {
   background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(../../img/nat-10.jpg);
   background-size: cover;
   border-radius: 3px;
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.35);
-  height: 50rem; }
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.35); }
+  @media (max-width: 75em) {
+    .book {
+      background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 70%, transparent 70%), url(../../img/nat-10.jpg); } }
+  @media (max-width: 37.5em) {
+    .book {
+      background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 100%), url(../../img/nat-10.jpg); } }
   .book__form {
     width: 50%;
     padding: 6rem; }
+    @media (max-width: 75em) {
+      .book__form {
+        width: 75%; } }
+    @media (max-width: 56.25em) {
+      .book__form {
+        padding: 3rem; } }
+    @media (max-width: 37.5em) {
+      .book__form {
+        width: 100%; } }

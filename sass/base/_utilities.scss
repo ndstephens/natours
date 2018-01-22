@@ -12,9 +12,17 @@
     }
     &-medium {
       margin-bottom: 4rem !important;
+
+      @include mq-tab-port {
+        margin-bottom: 3rem !important;
+      }
     }
     &-big {
       margin-bottom: 8rem !important;
+
+      @include mq-tab-port {
+        margin-bottom: 5rem !important;
+      }
     }
   }
 

@@ -1,18 +1,33 @@
 .header {
-  height: 95vh;
-  background-image: linear-gradient(
-      to right bottom,
-      rgba($color-primary-light, 0.8),
-      rgba($color-primary-dark, 0.8)
-    ),
-    url("../img/hero.jpg");
-  /*//* don't forget to include 'background-size: cover' */
-  background-size: cover;
-  /*//* 'bg-pos: top' ensures the top of the image is the stationary point as the screen size changes (the bottom and sides will adjust instead)...or use 'center' */
-  background-position: top;
-  position: relative;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  height: 100vh;
+  background-color: $color-grey-light-1;
+
+  &__background {
+    height: 95vh;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)
+      ),
+      url("../img/hero.jpg");
+    /*//* don't forget to include 'background-size: cover' */
+    background-size: cover;
+    /*//* 'bg-pos: top' ensures the top of the image is the stationary point as the screen size changes (the bottom and sides will adjust instead)...or use 'center' */
+    background-position: top;
+    position: relative;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    @include mq-tab-land {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    }
+    @include mq-tab-port {
+      height: 100vh;
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+    }
+  }
 
   &__logo-box {
     position: absolute;

@@ -8,6 +8,15 @@
   font-size: $default-font-size;
   transform: skewX(-12deg);
 
+  @include mq-tab-port {
+    width: 100%;
+  }
+  @include mq-phone {
+    padding: 5rem 4rem;
+    text-align: center;
+    transform: none;
+  }
+
   &:hover .story__caption {
     opacity: 1;
     transform: translate(-50%, -50%);
@@ -31,6 +40,12 @@
     transform: translateX(-3rem) skewX(12deg);
     position: relative;
     overflow: hidden;
+
+    @include mq-phone {
+      float: none;
+      margin: 0 auto 1rem;
+      transform: none;
+    }
   }
 
   &__img {
@@ -57,5 +72,14 @@
   &__text {
     transform: skewX(12deg);
     word-spacing: 0.15rem;
+
+    @include mq-tab-port {
+      & p {
+        font-size: 2rem;
+      }
+    }
+    @include mq-phone {
+      transform: none;
+    }
   }
 }

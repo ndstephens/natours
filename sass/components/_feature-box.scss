@@ -7,8 +7,21 @@
   box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.15);
   transition: all 0.3s;
 
+  @include mq-tab-port {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 2.5rem;
+  }
+  @include mq-phone {
+    width: 100%;
+  }
+
   &:hover {
     transform: translateY(-1.5rem) scale(1.03);
+
+    @include mq-tab-port {
+      transform: none;
+    }
   }
 
   &__icon {

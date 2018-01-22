@@ -3,8 +3,23 @@
   /*//* auto center the '.row' block elements */
   margin: 0 auto;
 
+  @include mq-tab-land {
+    max-width: 95%;
+  }
+
+  @include mq-tab-port {
+    max-width: 80%;
+  }
+  @include mq-phone {
+    max-width: 85%;
+  }
+
   &:not(:last-child) {
     margin-bottom: $gutter-vertical;
+
+    @include mq-tab-port {
+      margin-bottom: $gutter-vertical-sm;
+    }
   }
 
   /*//* all rows will include columns that are floated, which therefore need to be cleared */
@@ -12,11 +27,21 @@
 
   /*//* ATTRIBUTE SELECTOR!!!! */
   /*//* select all elements with a class of "col-..." */
+  /*//* could also use a 'starts with' selector like '[class^='col-']' */
   [class*="col-"] {
     float: left;
 
     &:not(:last-child) {
       margin-right: $gutter-horizontal;
+
+      @include mq-tab-port {
+        margin-right: 0;
+        margin-bottom: $gutter-vertical-sm;
+      }
+    }
+
+    @include mq-tab-port {
+      width: 100% !important;
     }
   }
 

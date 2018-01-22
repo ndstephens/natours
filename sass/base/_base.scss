@@ -14,7 +14,7 @@ html {
   /*//* all sizing throughout the site is done in 'rem's, so this 'font-size' property controls sizing throughout the site.  by changing this value in media-queries we also can easily effect overall sizing throughout site */
   font-size: 62.5%; // 1rem = 10px
 
-  /*//* ORDER MATTERS...for 'max-width' mq's you put the largest one first */
+  /*//* ORDER MATTERS...for 'max-width' mq's you put the largest one first (the more specific one last) */
   @include mq-tab-land {
     font-size: 56.25%; // 1rem = 9px
   }
@@ -27,6 +27,10 @@ html {
 }
 
 body {
-  padding: 3rem;
   box-sizing: border-box;
+  padding: 3rem;
+
+  @include mq-tab-port {
+    padding: 0;
+  }
 }

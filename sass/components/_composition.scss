@@ -19,13 +19,11 @@
     /*//* specified each transition prop, b/c wanted to omit transitioning the z-index change (looked weird) */
     transition: transform 0.2s, box-shadow 0.2s, outline 0.2s;
 
-    &:hover {
-      /*//* works similar to border, but doesn't add to box size and can be offset */
-      outline: 1.5rem solid $color-primary;
-      transform: scale(1.05) translateY(-0.5rem);
-      /*//* slightly grow the box-shadow, as would naturally happen when image grows */
-      box-shadow: 0 2.5 4rem rgba($color: $color-black, $alpha: 0.5);
-      z-index: 10;
+    @include mq-tab-port {
+      width: 60%;
+    }
+    @include mq-phone {
+      outline-offset: 1rem;
     }
 
     &--p1 {
@@ -39,6 +37,19 @@
     &--p3 {
       left: 20%;
       top: 10rem;
+    }
+
+    &:hover {
+      /*//* works similar to border, but doesn't add to box size and can be offset */
+      outline: 1.5rem solid $color-primary;
+      transform: scale(1.05) translateY(-0.5rem);
+      /*//* slightly grow the box-shadow, as would naturally happen when image grows */
+      box-shadow: 0 2.5 4rem rgba($color: $color-black, $alpha: 0.5);
+      z-index: 10;
+
+      @include mq-phone {
+        outline-width: 1rem;
+      }
     }
   }
 }

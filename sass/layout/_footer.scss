@@ -4,9 +4,17 @@
   font-size: 1.4rem;
   color: $text-grey-dark-2;
 
+  @include mq-tab-port {
+    padding: 8rem 0;
+  }
+
   &__logo-box {
     text-align: center;
     margin-bottom: 8rem;
+
+    @include mq-tab-port {
+      margin-bottom: 6rem;
+    }
   }
 
   &__logo {
@@ -18,6 +26,11 @@
     border-top: 1px solid $color-grey-med;
     padding-top: 2rem;
     display: inline-block;
+
+    @include mq-tab-port {
+      width: 100%;
+      text-align: center;
+    }
   }
 
   &__list {
@@ -57,5 +70,10 @@
     display: inline-block;
     width: 90%;
     float: right;
+
+    @include mq-tab-port {
+      width: 100%;
+      text-align: center;
+    }
   }
 }
