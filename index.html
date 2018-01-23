@@ -73,9 +73,24 @@
                 </div>
                 <div class="col-1-of-2">
                     <div class="composition">
-                        <img src="./img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
+                        <!-- //* "Art Direction" switching using media query size -->
+                        <!-- //* should probably just shrink the large one down to largest display size (about 460px) -->
+                        <picture class="composition__photo composition__photo--p1">
+                            <source srcset="./img/nat-1.jpg" media="(max-width: 37.5em)">
+                            <img srcset="./img/nat-1-large.jpg" alt="Photo 1">
+                        </picture>
+                        <picture class="composition__photo composition__photo--p2">
+                            <source srcset="./img/nat-2.jpg" media="(max-width: 37.5em)">
+                            <img srcset="./img/nat-2-large.jpg" alt="Photo 2">
+                        </picture>
+                        <picture class="composition__photo composition__photo--p3">
+                            <source srcset="./img/nat-3.jpg" media="(max-width: 37.5em)">
+                            <img srcset="./img/nat-3-large.jpg" alt="Photo 3">
+                        </picture>
+
+                        <!-- <img src="./img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
                         <img src="./img/nat-2-large.jpg" alt="Photo 2" class="composition__photo composition__photo--p2">
-                        <img src="./img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
+                        <img src="./img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3"> -->
                     </div>
                 </div>
             </div>
@@ -243,6 +258,7 @@
         <div class="popup" id="popup">
             <div class="popup__content">
                 <div class="popup__left">
+                    <!-- //* SHRINK THESE DOWN -->
                     <img src="./img/nat-8.jpg" alt="Tour Photo" class="popup__img">
                     <img src="./img/nat-9.jpg" alt="Tour Photo" class="popup__img">
                 </div>
@@ -260,6 +276,7 @@
         <section class="section-stories">
             <div class="bg-video">
                 <video class="bg-video__content" muted loop>
+                    <!-- //* SHRINK THESE DOWN (actually, replace with a background image)-->
                     <source src="./img/video.mp4" type="video/mp4">
                     <source src="./img/video.webm" type="video/webm">
                     Your browser is not supported
@@ -275,6 +292,7 @@
             <div class="row">
                 <div class="story">
                     <figure class="story__shape">
+                        <!-- //* SHRINK THIS DOWN -->
                         <img src="./img/nat-8.jpg" alt="Person on a tour" class="story__img">
                         <figcaption class="story__caption">Mary Smith</figcaption>
                     </figure>
@@ -289,6 +307,7 @@
             <div class="row">
                 <div class="story">
                     <figure class="story__shape">
+                        <!-- //* SHRINK THIS DOWN -->
                         <img src="./img/nat-9.jpg" alt="Person on a tour" class="story__img">
                         <figcaption class="story__caption">Jack Wilson</figcaption>
                     </figure>
@@ -356,7 +375,12 @@
 
     <footer class="footer">
         <div class="footer__logo-box">
-            <img src="./img/logo-green-2x.png" alt="Logo" class="footer__logo">
+            <!-- //* Example of density switching and "art direction" (changing the source image based on screen size) -->
+            <picture class="footer__logo">
+                <source srcset="./img/logo-green-small-1x.png 1x, ./img/logo-green-small-2x.png 2x" media="(max-width: 37.5em)">
+                <img srcset="./img/logo-green-1x.png 1x, ./img/logo-green-2x.png 2x" alt="Logo">
+            </picture>
+            <!-- <img srcset="./img/logo-green-1x.png 1x, ./img/logo-green-2x.png 2x" alt="Logo" class="footer__logo"> -->
         </div>
         <div class="row">
             <div class="col-1-of-2">

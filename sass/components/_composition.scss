@@ -10,6 +10,7 @@
 
   &__photo {
     width: 55%;
+    overflow: hidden;
     box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.4);
     border-radius: 2px;
     position: absolute;
@@ -18,6 +19,12 @@
     outline-offset: 2rem;
     /*//* specified each transition prop, b/c wanted to omit transitioning the z-index change (looked weird) */
     transition: transform 0.2s, box-shadow 0.2s, outline 0.2s;
+
+    & img {
+      width: 100%;
+      vertical-align: middle;
+      transform: scale(1.05);
+    }
 
     @include mq-tab-port {
       width: 60%;

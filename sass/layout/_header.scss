@@ -9,7 +9,7 @@
         rgba($color-primary-light, 0.8),
         rgba($color-primary-dark, 0.8)
       ),
-      url("../img/hero.jpg");
+      url("../img/hero-small.jpg");
     /*//* don't forget to include 'background-size: cover' */
     background-size: cover;
     /*//* 'bg-pos: top' ensures the top of the image is the stationary point as the screen size changes (the bottom and sides will adjust instead)...or use 'center' */
@@ -17,6 +17,18 @@
     position: relative;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    /*//* use larger image on higher resolution screens, that are also larger than a (600px) */
+    /*//* OR when screen width is wider than 2000px, regardless of pixel density */
+    @media (min-resolution: 192dpi) and (min-width: 37.5em),
+      (min-width: 125em) {
+      background-image: linear-gradient(
+          to right bottom,
+          rgba($color-primary-light, 0.8),
+          rgba($color-primary-dark, 0.8)
+        ),
+        url("../img/hero.jpg");
+    }
 
     @include mq-tab-land {
       -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);

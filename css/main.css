@@ -405,6 +405,7 @@ body {
     transform: scale(0.95); }
   .composition__photo {
     width: 55%;
+    overflow: hidden;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
     border-radius: 2px;
     position: absolute;
@@ -413,6 +414,10 @@ body {
     outline-offset: 2rem;
     /*//* specified each transition prop, b/c wanted to omit transitioning the z-index change (looked weird) */
     transition: transform 0.2s, box-shadow 0.2s, outline 0.2s; }
+    .composition__photo img {
+      width: 100%;
+      vertical-align: middle;
+      transform: scale(1.05); }
     @media (max-width: 56.25em) {
       .composition__photo {
         width: 60%; } }
@@ -851,14 +856,19 @@ body {
   background-color: #f7f7f7; }
   .header__background {
     height: 95vh;
-    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero-small.jpg");
     /*//* don't forget to include 'background-size: cover' */
     background-size: cover;
     /*//* 'bg-pos: top' ensures the top of the image is the stationary point as the screen size changes (the bottom and sides will adjust instead)...or use 'center' */
     background-position: top;
     position: relative;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    /*//* use larger image on higher resolution screens, that are also larger than a (600px) */
+    /*//* OR when screen width is wider than 2000px, regardless of pixel density */ }
+    @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+      .header__background {
+        background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg"); } }
     @media (max-width: 75em) {
       .header__background {
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
