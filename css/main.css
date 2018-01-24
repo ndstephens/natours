@@ -53,22 +53,26 @@ html {
   /*//* all sizing throughout the site is done in 'rem's, so this 'font-size' property controls sizing throughout the site.  by changing this value in media-queries we also can easily effect overall sizing throughout site */
   font-size: 62.5%;
   /*//* ORDER MATTERS...for 'max-width' mq's you put the largest one first (the more specific one last) */ }
-  @media (max-width: 75em) {
+  @media only screen and (max-width: 75em) {
     html {
       font-size: 56.25%; } }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     html {
       font-size: 50%; } }
-  @media (min-width: 112.5em) {
+  @media only screen and (min-width: 112.5em) {
     html {
       font-size: 75%; } }
 
 body {
   box-sizing: border-box;
   padding: 3rem; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     body {
       padding: 0; } }
+
+::selection {
+  background-color: #55c57a;
+  color: #fff; }
 
 body {
   font-family: "Lato", sans-serif;
@@ -92,7 +96,7 @@ body {
     margin-right: -3.5rem;
     /*//* 'animation-fill-mode: backwards' uses animation's starting values during the delay period (keeps element hidden / opacity at 0 before animation starts) */
     animation: moveInLeft 1000ms 200ms backwards; }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .heading-primary--main {
         letter-spacing: 1rem;
         font-size: 5rem; } }
@@ -103,7 +107,7 @@ body {
     letter-spacing: 1.75rem;
     margin-right: -1.75rem;
     animation: moveInRight 1000ms 900ms backwards; }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .heading-primary--sub {
         letter-spacing: 0.5rem; } }
 
@@ -120,7 +124,7 @@ body {
   color: transparent;
   letter-spacing: 0.2rem;
   transition: all 0.2s; }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .heading-secondary {
       font-size: 3rem; } }
   .heading-secondary:hover {
@@ -131,13 +135,13 @@ body {
   font-size: 1.6rem;
   font-weight: 700;
   text-transform: uppercase; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .heading-tertiary {
       font-size: 2.6rem; } }
 
 .paragraph {
   font-size: 1.6rem; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .paragraph {
       font-size: 2.5rem; } }
   .paragraph:not(:last-child) {
@@ -153,13 +157,13 @@ body {
 
 .u-margin-bottom-medium {
   margin-bottom: 4rem !important; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .u-margin-bottom-medium {
       margin-bottom: 3rem !important; } }
 
 .u-margin-bottom-big {
   margin-bottom: 8rem !important; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .u-margin-bottom-big {
       margin-bottom: 5rem !important; } }
 
@@ -265,7 +269,11 @@ body {
   height: 50rem;
   /*//?----------  FRONT SIDE  ----------*/
   /*//?----------  BACK SIDE  ----------*/
-  /*//?----------  MEDIA QUERY FOR TABLET PORTRAIT AND PHONE  ----------*/ }
+  /*//?----------  MEDIA QUERY FOR TABLET PORTRAIT AND PHONE  ----------*/
+  /*//* had to include original media query (not the mixin) b/c also need to add condition where this media query takes over whenever using a touch device (regardless of screen size).  (opposite of 'hover: none' is 'hover: hover') */
+  /*//* the following effects all touch devices.  below the width and heading font-size change for touch devices less than 75em (which is everything except the iPad Pro in landscape, which is wider).  see also the "TOURS SECTION" in the _home.scss file and its related media query */
+  /*//* the following changes the cards to single sided, but still shown 3-across.  below, the next media query changes the width and heading font-size, for when the cards are displayed in only 1 column */
+  /*//* when cards are shown vertically in only 1 column */ }
   .card:hover .card__side--front {
     transform: rotateY(-180deg); }
   .card:hover .card__side--back {
@@ -359,9 +367,8 @@ body {
   .card__price-value {
     font-size: 6rem;
     font-weight: 100; }
-  @media (max-width: 56.25em) {
+  @media only screen and (hover: none) {
     .card {
-      width: 80%;
       height: auto;
       margin: 0 auto;
       border-radius: 3px;
@@ -378,10 +385,8 @@ body {
         .card__side--back {
           transform: none;
           clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%); }
-      .card__heading {
-        font-size: 3.5rem; }
       .card__details ul li {
-        font-size: 2.5rem; }
+        font-size: 2.6rem; }
       .card__cta {
         position: relative;
         top: 0;
@@ -393,7 +398,12 @@ body {
         margin-bottom: 3rem; }
       .card__price-value {
         font-size: 6rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 75em) and (hover: none) {
+    .card {
+      width: 80%; }
+      .card__heading {
+        font-size: 3.5rem; } }
+  @media only screen and (max-width: 37.5em) {
     .card {
       width: 100%; } }
 
@@ -418,10 +428,10 @@ body {
       width: 100%;
       vertical-align: middle;
       transform: scale(1.05); }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .composition__photo {
         width: 60%; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .composition__photo {
         outline-offset: 1rem; } }
     .composition__photo--p1 {
@@ -440,7 +450,7 @@ body {
       /*//* slightly grow the box-shadow, as would naturally happen when image grows */
       box-shadow: 0 2.5 4rem rgba(0, 0, 0, 0.5);
       z-index: 10; }
-      @media (max-width: 37.5em) {
+      @media only screen and (max-width: 37.5em) {
         .composition__photo:hover {
           outline-width: 1rem; } }
 
@@ -452,17 +462,17 @@ body {
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   transition: all 0.3s; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .feature-box {
       width: 80%;
       margin: 0 auto;
       font-size: 2.5rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .feature-box {
       width: 100%; } }
   .feature-box:hover {
     transform: translateY(-1.5rem) scale(1.03); }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .feature-box:hover {
         transform: none; } }
   .feature-box__icon {
@@ -478,15 +488,15 @@ body {
 .form {
   /*//* this is the default radio button the browser supplies */
   /*//* the fake radio button */ }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .form .heading-secondary {
       max-width: 100%; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .form .heading-secondary {
       font-size: 2.7rem; } }
   .form__group:not(:last-child) {
     margin-bottom: 2rem; }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .form__group .btn.btn--green {
       display: block;
       margin: 0 auto; } }
@@ -506,7 +516,7 @@ body {
     transition: all 0.3s;
     /*//* color the placeholder text */
     /*//* the form label is hidden when the placeholder is visual.  when the user starts typing, the label element drops down and becomes visible */ }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .form__input {
         width: 100%; } }
     .form__input:focus {
@@ -534,7 +544,7 @@ body {
   .form__radio-group {
     width: 49%;
     display: inline-block; }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .form__radio-group {
         width: 100%;
         margin-bottom: 2rem; } }
@@ -549,7 +559,7 @@ body {
     cursor: pointer;
     position: relative;
     padding-left: 3.5rem; }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .form__radio-label {
         font-size: 2rem; } }
   .form__radio-button {
@@ -587,7 +597,13 @@ body {
   opacity: 0;
   visibility: hidden;
   transition: all 0.5s;
+  /*//* example of 'graceful degradation' by adding backdrop blur for Safari which currently supports it, but is ignored by other browsers */
   /*//* this element also has the id of 'popup'.  the 'Book Now' buttons on the 3 tour cards have an href of '#popup', so when they're clicked this element is the target.  so we can use the pseudo-class of ':target' to control this element when it's active target of a button click. when it's no longer the target (using a button to close it and activate another target ie '#section-tours' then it'll go back to its initial state */ }
+  @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+    .popup {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      background-color: rgba(0, 0, 0, 0.3); } }
   .popup:target {
     opacity: 1;
     visibility: visible; }
@@ -623,12 +639,12 @@ body {
     opacity: 0;
     /*//* add a short delay (0.2s) so that the screen starts going dark first (from the parent element '.popup' transition) before the content element ('.popup__content') begins its transition effect */
     transition: all 0.5s 0.2s; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .popup__content {
         display: block;
         max-height: 95vh;
         overflow: scroll; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .popup__content {
         width: 90%;
         max-height: 95vh;
@@ -636,13 +652,13 @@ body {
   .popup__left {
     width: 33.333333%;
     display: table-cell; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .popup__left {
         display: block;
         width: calc(100% - 10rem);
         margin: 3rem 5rem 0;
         text-align: center; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .popup__left {
         display: none; } }
   .popup__right {
@@ -650,20 +666,20 @@ body {
     display: table-cell;
     vertical-align: middle;
     padding: 3rem 5rem; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .popup__right {
         width: auto;
         display: block; }
         .popup__right .btn.btn--green {
           display: table;
           margin: 0 auto; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .popup__right .heading-secondary {
         display: none; } }
   .popup__img {
     display: block;
     width: 100%; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .popup__img:first-of-type {
         display: none; } }
   .popup__text {
@@ -675,7 +691,7 @@ body {
     column-rule: 1px solid #eee;
     /*//* add hyphens to wrapped text */
     hyphens: auto; }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .popup__text {
         column-count: 1; } }
 
@@ -688,10 +704,10 @@ body {
   padding: 6rem 4rem 6rem 9rem;
   font-size: 1.6rem;
   transform: skewX(-12deg); }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .story {
       width: 100%; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .story {
       padding: 5rem 4rem;
       text-align: center;
@@ -715,7 +731,7 @@ body {
     transform: translateX(-3rem) skewX(12deg);
     position: relative;
     overflow: hidden; }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .story__shape {
         float: none;
         margin: 0 auto 1rem;
@@ -740,10 +756,10 @@ body {
   .story__text {
     transform: skewX(12deg);
     word-spacing: 0.15rem; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .story__text p {
         font-size: 2rem; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .story__text {
         transform: none; } }
 
@@ -752,13 +768,13 @@ body {
   padding: 10rem 0;
   font-size: 1.4rem;
   color: #999; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .footer {
       padding: 8rem 0; } }
   .footer__logo-box {
     text-align: center;
     margin-bottom: 8rem; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .footer__logo-box {
         margin-bottom: 6rem; } }
   .footer__logo {
@@ -768,7 +784,7 @@ body {
     border-top: 1px solid #999;
     padding-top: 2rem;
     display: inline-block; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .footer__navigation {
         width: 100%;
         text-align: center; } }
@@ -795,7 +811,7 @@ body {
     display: inline-block;
     width: 90%;
     float: right; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .footer__copyright {
         width: 100%;
         text-align: center; } }
@@ -808,18 +824,18 @@ body {
   /*//* ATTRIBUTE SELECTOR!!!! */
   /*//* select all elements with a class of "col-..." */
   /*//* could also use a 'starts with' selector like '[class^='col-']' */ }
-  @media (max-width: 75em) {
+  @media only screen and (max-width: 75em) {
     .row {
       max-width: 95%; } }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .row {
       max-width: 80%; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .row {
       max-width: 85%; } }
   .row:not(:last-child) {
     margin-bottom: 8rem; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .row:not(:last-child) {
         margin-bottom: 6rem; } }
   .row::after {
@@ -830,11 +846,11 @@ body {
     float: left; }
     .row [class*="col-"]:not(:last-child) {
       margin-right: 6rem; }
-      @media (max-width: 56.25em) {
+      @media only screen and (max-width: 56.25em) {
         .row [class*="col-"]:not(:last-child) {
           margin-right: 0;
           margin-bottom: 6rem; } }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .row [class*="col-"] {
         width: 100% !important; } }
   .row .col-1-of-2 {
@@ -865,15 +881,16 @@ body {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     /*//* use larger image on higher resolution screens, that are also larger than a (600px) */
+    /*//* (specific for Safari) */
     /*//* OR when screen width is wider than 2000px, regardless of pixel density */ }
-    @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+    @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em), only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5), only screen and (min-width: 125em) {
       .header__background {
         background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg"); } }
-    @media (max-width: 75em) {
+    @media only screen and (max-width: 75em) {
       .header__background {
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
         clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%); } }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .header__background {
         height: 100vh;
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
@@ -922,11 +939,11 @@ body {
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
     text-align: center;
     cursor: pointer; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .navigation__button {
         top: 4rem;
         right: 4rem; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .navigation__button {
         top: 2.5rem;
         right: 2.5rem; } }
@@ -967,11 +984,11 @@ body {
     background-image: radial-gradient(#7ed56f, #28b485);
     z-index: 1000;
     transition: transform 0.5s; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .navigation__background {
         top: 4.5rem;
         right: 4.5rem; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .navigation__background {
         top: 3rem;
         right: 3rem; } }
@@ -993,7 +1010,7 @@ body {
     transform: translate(-50%, -50%);
     list-style: none;
     text-align: center; }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .navigation__list {
         width: 90%; } }
   .navigation__item {
@@ -1022,10 +1039,10 @@ body {
 .section-about {
   background-color: #f7f7f7;
   padding: 3rem 0 15rem; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .section-about {
       padding: 5rem 0 45rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .section-about {
       padding: 5rem 0 30rem; } }
 
@@ -1038,10 +1055,10 @@ body {
     background-size: cover;
     transform: skewY(-6deg);
     /*//* select all DIRECT children of '.section-features' (which is the div.row that contains all the feature box columns) and remove the skew */ }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .section-features__background {
         padding: 15rem 0; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .section-features__background {
         padding: 10rem 0; } }
     .section-features__background > * {
@@ -1050,11 +1067,20 @@ body {
 /*//?----------  TOURS SECTION  ----------*/
 .section-tours {
   background-color: #f7f7f7;
-  padding: 15rem 0; }
-  @media (max-width: 56.25em) {
+  padding: 15rem 0;
+  /*//* on all touchscreens (except iPad Pro in landscape) the cards in the Tours Section should be shown in one column, not 3, b/c they are displayed with the alternate layout (with the backface info shown on the front) so they look fucked up when displayed in 3 columns */ }
+  @media only screen and (max-width: 75em) and (hover: none) {
+    .section-tours .row {
+      max-width: 80%; }
+      .section-tours .row [class*="col-"] {
+        width: 100% !important; }
+        .section-tours .row [class*="col-"]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 6rem; } }
+  @media only screen and (max-width: 56.25em) {
     .section-tours {
       padding: 10rem 0; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .section-tours {
       padding: 7.5rem 0 5rem; } }
 
@@ -1062,10 +1088,10 @@ body {
 .section-stories {
   padding: 15rem 0;
   position: relative; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .section-stories {
       padding: 10rem 0; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .section-stories {
       padding: 5rem 0; } }
 
@@ -1073,7 +1099,7 @@ body {
 .section-book {
   padding: 15rem 0;
   background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .section-book {
       padding: 10rem 0; } }
 
@@ -1082,21 +1108,21 @@ body {
   background-size: cover;
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.35); }
-  @media (max-width: 75em) {
+  @media only screen and (max-width: 75em) {
     .book {
       background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 70%, transparent 70%), url(../../img/nat-10.jpg); } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .book {
       background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 100%), url(../../img/nat-10.jpg); } }
   .book__form {
     width: 50%;
     padding: 6rem; }
-    @media (max-width: 75em) {
+    @media only screen and (max-width: 75em) {
       .book__form {
         width: 75%; } }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .book__form {
         padding: 3rem; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .book__form {
         width: 100%; } }

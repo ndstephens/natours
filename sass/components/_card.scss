@@ -181,8 +181,13 @@
   //
   //
   /*//?----------  MEDIA QUERY FOR TABLET PORTRAIT AND PHONE  ----------*/
-  @include mq-tab-port {
-    width: 80%;
+  /*//* had to include original media query (not the mixin) b/c also need to add condition where this media query takes over whenever using a touch device (regardless of screen size).  (opposite of 'hover: none' is 'hover: hover') */
+
+  /*//* the following effects all touch devices.  below the width and heading font-size change for touch devices less than 75em (which is everything except the iPad Pro in landscape, which is wider).  see also the "TOURS SECTION" in the _home.scss file and its related media query */
+
+  /*//* the following changes the cards to single sided, but still shown 3-across.  below, the next media query changes the width and heading font-size, for when the cards are displayed in only 1 column */
+  @media only screen and (hover: none) {
+    // width: 80%;
     height: auto;
     margin: 0 auto;
     border-radius: $border-radius;
@@ -205,14 +210,14 @@
       }
     }
 
-    &__heading {
-      font-size: 3.5rem;
-    }
+    // &__heading {
+    //   font-size: 3.5rem;
+    // }
 
     &__details {
       ul {
         li {
-          font-size: 2.5rem;
+          font-size: 2.6rem;
         }
       }
     }
@@ -232,6 +237,13 @@
 
     &__price-value {
       font-size: 6rem;
+    }
+  }
+  /*//* when cards are shown vertically in only 1 column */
+  @media only screen and (max-width: 75em) and (hover: none) {
+    width: 80%;
+    &__heading {
+      font-size: 3.5rem;
     }
   }
   @include mq-phone {

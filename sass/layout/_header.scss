@@ -19,9 +19,11 @@
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
     /*//* use larger image on higher resolution screens, that are also larger than a (600px) */
+    /*//* (specific for Safari) */
     /*//* OR when screen width is wider than 2000px, regardless of pixel density */
-    @media (min-resolution: 192dpi) and (min-width: 37.5em),
-      (min-width: 125em) {
+    @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+      only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5),
+      only screen and (min-width: 125em) {
       background-image: linear-gradient(
           to right bottom,
           rgba($color-primary-light, 0.8),

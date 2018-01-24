@@ -11,6 +11,13 @@
   visibility: hidden;
   transition: all 0.5s;
 
+  /*//* example of 'graceful degradation' by adding backdrop blur for Safari which currently supports it, but is ignored by other browsers */
+  @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba($color-black, 0.3);
+  }
+
   /*//* this element also has the id of 'popup'.  the 'Book Now' buttons on the 3 tour cards have an href of '#popup', so when they're clicked this element is the target.  so we can use the pseudo-class of ':target' to control this element when it's active target of a button click. when it's no longer the target (using a button to close it and activate another target ie '#section-tours' then it'll go back to its initial state */
   &:target {
     opacity: 1;

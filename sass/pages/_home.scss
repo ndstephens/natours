@@ -46,6 +46,21 @@
   background-color: $color-grey-light-1;
   padding: 15rem 0;
 
+  /*//* on all touchscreens (except iPad Pro in landscape) the cards in the Tours Section should be shown in one column, not 3, b/c they are displayed with the alternate layout (with the backface info shown on the front) so they look fucked up when displayed in 3 columns */
+  @media only screen and (max-width: 75em) and (hover: none) {
+    .row {
+      max-width: 80%;
+
+      [class*="col-"] {
+        width: 100% !important;
+        &:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: $gutter-vertical-sm;
+        }
+      }
+    }
+  }
+
   @include mq-tab-port {
     padding: 10rem 0;
   }
