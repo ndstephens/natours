@@ -9,34 +9,46 @@
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-10rem); }
+    transform: translateX(-10rem);
+  }
   100% {
     opacity: 1;
-    transform: translateX(0); } }
+    transform: translateX(0);
+  }
+}
 
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(10rem); }
+    transform: translateX(10rem);
+  }
   100% {
     opacity: 1;
-    transform: translateX(0); } }
+    transform: translateX(0);
+  }
+}
 
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(3rem); }
+    transform: translateY(3rem);
+  }
   100% {
     opacity: 1;
-    transform: translateY(0); } }
+    transform: translateY(0);
+  }
+}
 
 @keyframes btnFlash {
   0% {
     opacity: 0.5;
-    transform: scale(1); }
+    transform: scale(1);
+  }
   100% {
     opacity: 0;
-    transform: scale(1.3); } }
+    transform: scale(1.3);
+  }
+}
 
 /*//* select all pseudo-elements as well '::after' '::before'*/
 *,
@@ -45,40 +57,53 @@
   margin: 0;
   padding: 0;
   /*//* all selectors now inherit 'box-sizing: border-box' from 'body' */
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 html {
   /*//* want this at '10px' for easy rem calculations, however shouldn't hard-code b/c would override user's browser settings.  default setting is 16px.  10/16 = 0.625 */
   /*//* Defines what '1rem' is */
   /*//* all sizing throughout the site is done in 'rem's, so this 'font-size' property controls sizing throughout the site.  by changing this value in media-queries we also can easily effect overall sizing throughout site */
   font-size: 62.5%;
-  /*//* ORDER MATTERS...for 'max-width' mq's you put the largest one first (the more specific one last) */ }
-  @media only screen and (max-width: 75em) {
-    html {
-      font-size: 56.25%; } }
-  @media only screen and (max-width: 56.25em) {
-    html {
-      font-size: 50%; } }
-  @media only screen and (min-width: 112.5em) {
-    html {
-      font-size: 75%; } }
+  /*//* ORDER MATTERS...for 'max-width' mq's you put the largest one first (the more specific one last) */
+}
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+}
+@media only screen and (min-width: 112.5em) {
+  html {
+    font-size: 75%;
+  }
+}
 
 body {
   box-sizing: border-box;
-  padding: 3rem; }
-  @media only screen and (max-width: 56.25em) {
-    body {
-      padding: 0; } }
+  padding: 3rem;
+}
+@media only screen and (max-width: 56.25em) {
+  body {
+    padding: 0;
+  }
+}
 
 ::selection {
   background-color: #55c57a;
-  color: #fff; }
+  color: #fff;
+}
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   line-height: 1.7;
-  color: #777; }
+  color: #777;
+}
 
 /*//?----------  HEADERS  ----------*/
 .heading-primary {
@@ -86,30 +111,37 @@ body {
   text-transform: uppercase;
   /*//* hack to fix any odd shakiness in animation of element, not really needed here */
   backface-visibility: hidden;
-  margin-bottom: 6rem; }
+  margin-bottom: 6rem;
+}
+.heading-primary--main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+  /*//* a negative 'margin-right' counteracts the 'letter-spacing' of the last character, which throws off its centering */
+  margin-right: -3.5rem;
+  /*//* 'animation-fill-mode: backwards' uses animation's starting values during the delay period (keeps element hidden / opacity at 0 before animation starts) */
+  animation: moveInLeft 1000ms 200ms backwards;
+}
+@media only screen and (max-width: 37.5em) {
   .heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    /*//* a negative 'margin-right' counteracts the 'letter-spacing' of the last character, which throws off its centering */
-    margin-right: -3.5rem;
-    /*//* 'animation-fill-mode: backwards' uses animation's starting values during the delay period (keeps element hidden / opacity at 0 before animation starts) */
-    animation: moveInLeft 1000ms 200ms backwards; }
-    @media only screen and (max-width: 37.5em) {
-      .heading-primary--main {
-        letter-spacing: 1rem;
-        font-size: 5rem; } }
+    letter-spacing: 1rem;
+    font-size: 5rem;
+  }
+}
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.75rem;
+  margin-right: -1.75rem;
+  animation: moveInRight 1000ms 900ms backwards;
+}
+@media only screen and (max-width: 37.5em) {
   .heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-    margin-right: -1.75rem;
-    animation: moveInRight 1000ms 900ms backwards; }
-    @media only screen and (max-width: 37.5em) {
-      .heading-primary--sub {
-        letter-spacing: 0.5rem; } }
+    letter-spacing: 0.5rem;
+  }
+}
 
 .heading-secondary {
   max-width: 90%;
@@ -123,52 +155,72 @@ body {
   background-clip: text;
   color: transparent;
   letter-spacing: 0.2rem;
-  transition: all 0.2s; }
-  @media only screen and (max-width: 37.5em) {
-    .heading-secondary {
-      font-size: 3rem; } }
-  .heading-secondary:hover {
-    transform: skewY(2deg) skewX(5deg) scale(1.1);
-    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+  transition: all 0.2s;
+}
+@media only screen and (max-width: 37.5em) {
+  .heading-secondary {
+    font-size: 3rem;
+  }
+}
+.heading-secondary:hover {
+  transform: skewY(2deg) skewX(5deg) scale(1.1);
+  text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
+}
 
 .heading-tertiary {
   font-size: 1.6rem;
   font-weight: 700;
-  text-transform: uppercase; }
-  @media only screen and (max-width: 56.25em) {
-    .heading-tertiary {
-      font-size: 2.6rem; } }
+  text-transform: uppercase;
+}
+@media only screen and (max-width: 56.25em) {
+  .heading-tertiary {
+    font-size: 2.6rem;
+  }
+}
 
 .paragraph {
-  font-size: 1.6rem; }
-  @media only screen and (max-width: 56.25em) {
-    .paragraph {
-      font-size: 2.5rem; } }
-  .paragraph:not(:last-child) {
-    margin-bottom: 3rem; }
+  font-size: 1.6rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .paragraph {
+    font-size: 2.5rem;
+  }
+}
+.paragraph:not(:last-child) {
+  margin-bottom: 3rem;
+}
 
 /*//* any inline-block elements that sit within a parent having this class will be centered within that parent */
 .u-center-text {
-  text-align: center !important; }
+  text-align: center !important;
+}
 
 /*//* basic utilities to add margin, versus adding property into existing class(es)  */
 .u-margin-bottom-small {
-  margin-bottom: 1.5rem !important; }
+  margin-bottom: 1.5rem !important;
+}
 
 .u-margin-bottom-medium {
-  margin-bottom: 4rem !important; }
-  @media only screen and (max-width: 56.25em) {
-    .u-margin-bottom-medium {
-      margin-bottom: 3rem !important; } }
+  margin-bottom: 4rem !important;
+}
+@media only screen and (max-width: 56.25em) {
+  .u-margin-bottom-medium {
+    margin-bottom: 3rem !important;
+  }
+}
 
 .u-margin-bottom-big {
-  margin-bottom: 8rem !important; }
-  @media only screen and (max-width: 56.25em) {
-    .u-margin-bottom-big {
-      margin-bottom: 5rem !important; } }
+  margin-bottom: 8rem !important;
+}
+@media only screen and (max-width: 56.25em) {
+  .u-margin-bottom-big {
+    margin-bottom: 5rem !important;
+  }
+}
 
 .u-margin-top-big {
-  margin-top: 8rem !important; }
+  margin-top: 8rem !important;
+}
 
 .bg-video {
   position: absolute;
@@ -178,88 +230,108 @@ body {
   width: 100%;
   z-index: -1;
   opacity: 0.15;
-  overflow: hidden; }
-  .bg-video__content {
-    height: 100%;
-    width: 100%;
-    /*//* will fill/fit the parent element container while maintaining its aspect ratio */
-    object-fit: cover; }
+  overflow: hidden;
+}
+.bg-video__content {
+  height: 100%;
+  width: 100%;
+  /*//* will fill/fit the parent element container while maintaining its aspect ratio */
+  object-fit: cover;
+}
 
 /*//?----------  HERO BUTTON  ----------*/
 .btn {
   /*//* the first '&' is for using the '.btn' class without a ':link' or ':hover' state...such as when it's applied to a <button> element and not an <a> anchor element */
   /*//* including ':focus' is for when the '.btn' class is used on a <button> element b/c when it's in focus it gets a browser defaulted blue outline, which is not wanted */
   /*//?----------  HERO BUTTON FLASHY ANIMATION  ----------*/
-  /*//* the "::after" pseudo-element basically adds a 'virtual-element' after the original element, which we can then style and animate */ }
-  .btn, .btn:link, .btn:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    /*//* make 'block' or 'inline-block' for box-model props such as padding / margin / etc */
-    display: inline-block;
-    /*//* a very high 'bd-radius' number will simply round off the sides */
-    border-radius: 10rem;
-    /*//* 'transition' prop has to be on the 'initial state' or property */
-    /*//* simply list 'all' properties instead of each individually (animate anything that changes) */
-    transition: all 200ms;
-    position: relative;
-    font-size: 1.6rem;
-    /*//* additional properties for the <button> element */
-    border: none;
-    cursor: pointer; }
-  .btn:hover {
-    transform: translateY(-0.3rem);
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-  .btn:active, .btn:focus {
-    outline: none;
-    transform: translateY(-0.1rem);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
-  .btn::after {
-    /*//* always have to include some content, often it's an empty string */
-    content: "";
-    display: inline-block;
-    /*//* height and width are matching the original or parent element with the '&' class */
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    /*//* position exactly where parent is, but behind it */
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1; }
-  .btn:hover::after {
-    animation: btnFlash 400ms; }
-  .btn.btn--animated-rise {
-    animation: moveInBottom 1000ms 1600ms backwards; }
-  .btn.btn--white {
-    background-color: #fff;
-    color: #777; }
-    .btn.btn--white::after {
-      background-color: #fff; }
-  .btn.btn--green {
-    background-color: #55c57a;
-    color: #fff; }
-    .btn.btn--green::after {
-      background-color: #55c57a; }
+  /*//* the "::after" pseudo-element basically adds a 'virtual-element' after the original element, which we can then style and animate */
+}
+.btn,
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  /*//* make 'block' or 'inline-block' for box-model props such as padding / margin / etc */
+  display: inline-block;
+  /*//* a very high 'bd-radius' number will simply round off the sides */
+  border-radius: 10rem;
+  /*//* 'transition' prop has to be on the 'initial state' or property */
+  /*//* simply list 'all' properties instead of each individually (animate anything that changes) */
+  transition: all 200ms;
+  position: relative;
+  font-size: 1.6rem;
+  /*//* additional properties for the <button> element */
+  border: none;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+.btn:active,
+.btn:focus {
+  outline: none;
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+.btn::after {
+  /*//* always have to include some content, often it's an empty string */
+  content: '';
+  display: inline-block;
+  /*//* height and width are matching the original or parent element with the '&' class */
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  /*//* position exactly where parent is, but behind it */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.btn:hover::after {
+  animation: btnFlash 400ms;
+}
+.btn.btn--animated-rise {
+  animation: moveInBottom 1000ms 1600ms backwards;
+}
+.btn.btn--white {
+  background-color: #fff;
+  color: #777;
+}
+.btn.btn--white::after {
+  background-color: #fff;
+}
+.btn.btn--green {
+  background-color: #55c57a;
+  color: #fff;
+}
+.btn.btn--green::after {
+  background-color: #55c57a;
+}
 
-.btn-text:link, .btn-text:visited {
+.btn-text:link,
+.btn-text:visited {
   color: #55c57a;
   display: inline-block;
   text-decoration: none;
   font-size: 1.6rem;
   border-bottom: 1px solid #55c57a;
   padding: 0.3rem;
-  transition: all 0.2s; }
+  transition: all 0.2s;
+}
 
 .btn-text:hover {
   background-color: #55c57a;
   color: #fff;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
-  transform: translateY(-0.2rem); }
+  transform: translateY(-0.2rem);
+}
 
 .btn-text:active {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  transform: translateY(0); }
+  transform: translateY(0);
+}
 
 .card {
   /*//* larger value makes effect visually less severe (as if you're viewing from further away as it rotates) */
@@ -273,186 +345,255 @@ body {
   /*//* had to include original media query (not the mixin) b/c also need to add condition where this media query takes over whenever using a touch device (regardless of screen size).  (opposite of 'hover: none' is 'hover: hover') */
   /*//* the following effects all touch devices.  below the width and heading font-size change for touch devices less than 75em (which is everything except the iPad Pro in landscape, which is wider).  see also the "TOURS SECTION" in the _home.scss file and its related media query */
   /*//* the following changes the cards to single sided, but still shown 3-across.  below, the next media query changes the width and heading font-size, for when the cards are displayed in only 1 column */
-  /*//* when cards are shown vertically in only 1 column */ }
+  /*//* when cards are shown vertically in only 1 column */
+}
+.card:hover .card__side--front {
+  transform: rotateY(-180deg);
+}
+.card:hover .card__side--back {
+  transform: rotateY(0deg);
+}
+.card__side {
+  height: 50rem;
+  transition: all 0.8s;
+  /*//* both sides of card need to occupy the same space */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /*//* need to hide the backside of each card */
+  backface-visibility: hidden;
+  border-radius: 3px;
+  /*//* 'overflow: hidden' forces child image to sit within the border-radius */
+  overflow: hidden;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+}
+.card__side--front {
+  background-color: #fff;
+}
+.card__side--back {
+  /*//* needs to start out already rotated around */
+  transform: rotateY(180deg);
+}
+.card__side--back-1 {
+  background-image: linear-gradient(to right bottom, #ffb900, #ff7730);
+}
+.card__side--back-2 {
+  background-image: linear-gradient(to right bottom, #7ed56f, #28b485);
+}
+.card__side--back-3 {
+  background-image: linear-gradient(to right bottom, #2998ff, #5643fa);
+}
+.card__picture {
+  background-size: cover;
+  /*//* can experiment with different modes in Dev Tools for instant feedback */
+  /*//* blends the linear-gradient with the image underneath it */
+  height: 23rem;
+  background-blend-mode: screen;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+.card__picture--1 {
+  background-image: linear-gradient(to right bottom, #ffb900, #ff7730),
+    url(/img/nat-5.jpg);
+}
+.card__picture--2 {
+  background-image: linear-gradient(to right bottom, #7ed56f, #28b485),
+    url(/img/nat-6.jpg);
+}
+.card__picture--3 {
+  background-image: linear-gradient(to right bottom, #2998ff, #5643fa),
+    url(/img/nat-7.jpg);
+}
+.card__heading {
+  font-size: 2.8rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-align: right;
+  color: #fff;
+  position: absolute;
+  top: 12rem;
+  right: 2rem;
+  width: 75%;
+  z-index: 1;
+}
+.card__heading-span {
+  padding: 1rem 1.5rem;
+  /*//* the '.card__heading' width of 75% and this padding cause the span's content box to break into 2 separate lines.  using 'box-decoration-break: clone' gives each separate content box the same padding (to understand effect just disable it in DevTools and see the effect).  in future, maybe just use 2 separate spans. */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.card__heading-span--1 {
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(255, 185, 0, 0.85),
+    rgba(255, 119, 48, 0.85)
+  );
+}
+.card__heading-span--2 {
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(126, 213, 111, 0.85),
+    rgba(40, 180, 133, 0.85)
+  );
+}
+.card__heading-span--3 {
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(41, 152, 255, 0.85),
+    rgba(86, 67, 250, 0.85)
+  );
+}
+.card__details {
+  padding: 2rem;
+}
+.card__details ul {
+  list-style: none;
+  width: 80%;
+  margin: 0 auto;
+}
+.card__details ul li {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+.card__details ul li:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+.card__cta {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  text-align: center;
+}
+.card__price-box {
+  margin-bottom: 8rem;
+  color: #fff;
+}
+.card__price-only {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+.card__price-value {
+  font-size: 6rem;
+  font-weight: 100;
+}
+@media only screen and (hover: none) {
+  .card {
+    height: auto;
+    margin: 0 auto;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    /*//?----------  BACK SIDE  ----------*/
+  }
   .card:hover .card__side--front {
-    transform: rotateY(-180deg); }
-  .card:hover .card__side--back {
-    transform: rotateY(0deg); }
+    transform: none;
+  }
   .card__side {
-    height: 50rem;
-    transition: all 0.8s;
-    /*//* both sides of card need to occupy the same space */
-    position: absolute;
+    height: auto;
+    position: relative;
+    box-shadow: none;
+  }
+  .card__side--back {
+    transform: none;
+    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+  }
+  .card__details ul li {
+    font-size: 2.6rem;
+  }
+  .card__cta {
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
-    /*//* need to hide the backside of each card */
-    backface-visibility: hidden;
-    border-radius: 3px;
-    /*//* 'overflow: hidden' forces child image to sit within the border-radius */
-    overflow: hidden;
-    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
-    .card__side--front {
-      background-color: #fff; }
-    .card__side--back {
-      /*//* needs to start out already rotated around */
-      transform: rotateY(180deg); }
-      .card__side--back-1 {
-        background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
-      .card__side--back-2 {
-        background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
-      .card__side--back-3 {
-        background-image: linear-gradient(to right bottom, #2998ff, #5643fa); }
-  .card__picture {
-    background-size: cover;
-    /*//* can experiment with different modes in Dev Tools for instant feedback */
-    /*//* blends the linear-gradient with the image underneath it */
-    height: 23rem;
-    background-blend-mode: screen;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
-    .card__picture--1 {
-      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../../img/nat-5.jpg); }
-    .card__picture--2 {
-      background-image: linear-gradient(to right bottom, #7ed56f, #28b485), url(../../img/nat-6.jpg); }
-    .card__picture--3 {
-      background-image: linear-gradient(to right bottom, #2998ff, #5643fa), url(../../img/nat-7.jpg); }
-  .card__heading {
-    font-size: 2.8rem;
-    font-weight: 300;
-    text-transform: uppercase;
-    text-align: right;
-    color: #fff;
-    position: absolute;
-    top: 12rem;
-    right: 2rem;
-    width: 75%;
-    z-index: 1; }
-    .card__heading-span {
-      padding: 1rem 1.5rem;
-      /*//* the '.card__heading' width of 75% and this padding cause the span's content box to break into 2 separate lines.  using 'box-decoration-break: clone' gives each separate content box the same padding (to understand effect just disable it in DevTools and see the effect).  in future, maybe just use 2 separate spans. */
-      -webkit-box-decoration-break: clone;
-      box-decoration-break: clone; }
-      .card__heading-span--1 {
-        background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); }
-      .card__heading-span--2 {
-        background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.85), rgba(40, 180, 133, 0.85)); }
-      .card__heading-span--3 {
-        background-image: linear-gradient(to right bottom, rgba(41, 152, 255, 0.85), rgba(86, 67, 250, 0.85)); }
-  .card__details {
-    padding: 2rem; }
-    .card__details ul {
-      list-style: none;
-      width: 80%;
-      margin: 0 auto; }
-      .card__details ul li {
-        text-align: center;
-        font-size: 1.5rem;
-        padding: 1rem; }
-        .card__details ul li:not(:last-child) {
-          border-bottom: 1px solid #eee; }
-  .card__cta {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    text-align: center; }
+    transform: none;
+    padding: 7rem 4rem 4rem;
+  }
   .card__price-box {
-    margin-bottom: 8rem;
-    color: #fff; }
-  .card__price-only {
-    font-size: 1.4rem;
-    text-transform: uppercase; }
+    margin-bottom: 3rem;
+  }
   .card__price-value {
     font-size: 6rem;
-    font-weight: 100; }
-  @media only screen and (hover: none) {
-    .card {
-      height: auto;
-      margin: 0 auto;
-      border-radius: 3px;
-      overflow: hidden;
-      background-color: #fff;
-      box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
-      /*//?----------  BACK SIDE  ----------*/ }
-      .card:hover .card__side--front {
-        transform: none; }
-      .card__side {
-        height: auto;
-        position: relative;
-        box-shadow: none; }
-        .card__side--back {
-          transform: none;
-          clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%); }
-      .card__details ul li {
-        font-size: 2.6rem; }
-      .card__cta {
-        position: relative;
-        top: 0;
-        left: 0;
-        width: 100%;
-        transform: none;
-        padding: 7rem 4rem 4rem; }
-      .card__price-box {
-        margin-bottom: 3rem; }
-      .card__price-value {
-        font-size: 6rem; } }
-  @media only screen and (max-width: 75em) and (hover: none) {
-    .card {
-      width: 80%; }
-      .card__heading {
-        font-size: 3.5rem; } }
-  @media only screen and (max-width: 37.5em) {
-    .card {
-      width: 100%; } }
+  }
+}
+@media only screen and (max-width: 75em) and (hover: none) {
+  .card {
+    width: 80%;
+  }
+  .card__heading {
+    font-size: 3.5rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .card {
+    width: 100%;
+  }
+}
 
 /*//?----------  3 IMAGES IN ABOUT SECTION  ----------*/
 .composition {
   position: relative;
-  /*//* when hovering over the '.composition' element (parent of the 3 photos) AND you're not the photo that is currently being hovered over, then scale down */ }
-  .composition:hover .composition__photo:not(:hover) {
-    transform: scale(0.95); }
+  /*//* when hovering over the '.composition' element (parent of the 3 photos) AND you're not the photo that is currently being hovered over, then scale down */
+}
+.composition:hover .composition__photo:not(:hover) {
+  transform: scale(0.95);
+}
+.composition__photo {
+  width: 55%;
+  overflow: hidden;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
+  position: absolute;
+  z-index: 1;
+  /*//* can stretch outline out from content */
+  outline-offset: 2rem;
+  /*//* specified each transition prop, b/c wanted to omit transitioning the z-index change (looked weird) */
+  transition: transform 0.2s, box-shadow 0.2s, outline 0.2s;
+}
+.composition__photo img {
+  width: 100%;
+  vertical-align: middle;
+  transform: scale(1.05);
+}
+@media only screen and (max-width: 56.25em) {
   .composition__photo {
-    width: 55%;
-    overflow: hidden;
-    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
-    border-radius: 2px;
-    position: absolute;
-    z-index: 1;
-    /*//* can stretch outline out from content */
-    outline-offset: 2rem;
-    /*//* specified each transition prop, b/c wanted to omit transitioning the z-index change (looked weird) */
-    transition: transform 0.2s, box-shadow 0.2s, outline 0.2s; }
-    .composition__photo img {
-      width: 100%;
-      vertical-align: middle;
-      transform: scale(1.05); }
-    @media only screen and (max-width: 56.25em) {
-      .composition__photo {
-        width: 60%; } }
-    @media only screen and (max-width: 37.5em) {
-      .composition__photo {
-        outline-offset: 1rem; } }
-    .composition__photo--p1 {
-      left: 0;
-      top: -2rem; }
-    .composition__photo--p2 {
-      right: 0;
-      top: 2rem; }
-    .composition__photo--p3 {
-      left: 20%;
-      top: 10rem; }
-    .composition__photo:hover {
-      /*//* works similar to border, but doesn't add to box size and can be offset */
-      outline: 1.5rem solid #55c57a;
-      transform: scale(1.05) translateY(-0.5rem);
-      /*//* slightly grow the box-shadow, as would naturally happen when image grows */
-      box-shadow: 0 2.5 4rem rgba(0, 0, 0, 0.5);
-      z-index: 10; }
-      @media only screen and (max-width: 37.5em) {
-        .composition__photo:hover {
-          outline-width: 1rem; } }
+    width: 60%;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .composition__photo {
+    outline-offset: 1rem;
+  }
+}
+.composition__photo--p1 {
+  left: 0;
+  top: -2rem;
+}
+.composition__photo--p2 {
+  right: 0;
+  top: 2rem;
+}
+.composition__photo--p3 {
+  left: 20%;
+  top: 10rem;
+}
+.composition__photo:hover {
+  /*//* works similar to border, but doesn't add to box size and can be offset */
+  outline: 1.5rem solid #55c57a;
+  transform: scale(1.05) translateY(-0.5rem);
+  /*//* slightly grow the box-shadow, as would naturally happen when image grows */
+  box-shadow: 0 2.5 4rem rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+@media only screen and (max-width: 37.5em) {
+  .composition__photo:hover {
+    outline-width: 1rem;
+  }
+}
 
 .feature-box {
   background-color: rgba(255, 255, 255, 0.8);
@@ -461,130 +602,165 @@ body {
   text-align: center;
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
-  transition: all 0.3s; }
-  @media only screen and (max-width: 56.25em) {
-    .feature-box {
-      width: 80%;
-      margin: 0 auto;
-      font-size: 2.5rem; } }
-  @media only screen and (max-width: 37.5em) {
-    .feature-box {
-      width: 100%; } }
+  transition: all 0.3s;
+}
+@media only screen and (max-width: 56.25em) {
+  .feature-box {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 2.5rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .feature-box {
+    width: 100%;
+  }
+}
+.feature-box:hover {
+  transform: translateY(-1.5rem) scale(1.03);
+}
+@media only screen and (max-width: 56.25em) {
   .feature-box:hover {
-    transform: translateY(-1.5rem) scale(1.03); }
-    @media only screen and (max-width: 56.25em) {
-      .feature-box:hover {
-        transform: none; } }
-  .feature-box__icon {
-    font-size: 6rem;
-    margin-bottom: 0.5rem;
-    /*//* make 'inline-block' to control box properties (such as margin) */
-    display: inline-block;
-    background-image: linear-gradient(to right, #7ed56f, #28b485);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent; }
+    transform: none;
+  }
+}
+.feature-box__icon {
+  font-size: 6rem;
+  margin-bottom: 0.5rem;
+  /*//* make 'inline-block' to control box properties (such as margin) */
+  display: inline-block;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
 .form {
   /*//* this is the default radio button the browser supplies */
-  /*//* the fake radio button */ }
-  @media only screen and (max-width: 56.25em) {
-    .form .heading-secondary {
-      max-width: 100%; } }
-  @media only screen and (max-width: 37.5em) {
-    .form .heading-secondary {
-      font-size: 2.7rem; } }
-  .form__group:not(:last-child) {
-    margin-bottom: 2rem; }
-  @media only screen and (max-width: 37.5em) {
-    .form__group .btn.btn--green {
-      display: block;
-      margin: 0 auto; } }
+  /*//* the fake radio button */
+}
+@media only screen and (max-width: 56.25em) {
+  .form .heading-secondary {
+    max-width: 100%;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .form .heading-secondary {
+    font-size: 2.7rem;
+  }
+}
+.form__group:not(:last-child) {
+  margin-bottom: 2rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .form__group .btn.btn--green {
+    display: block;
+    margin: 0 auto;
+  }
+}
+.form__input {
+  font-size: 1.5rem;
+  /*//* inputs by default use the browser's default font and color.  don't need to set them explicitly, can simply use 'inherit' */
+  font-family: inherit;
+  color: inherit;
+  padding: 1.5rem 2rem;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  /*//* need to add transparent border-bottom b/c otherwise when the element is in 'focus' and the border-bottom gets added, the element will grow in size by 3px and move on screen.  by already having the border there (yet transparent) the element won't appear to move */
+  border-bottom: 3px solid transparent;
+  width: 90%;
+  display: block;
+  transition: all 0.3s;
+  /*//* color the placeholder text */
+  /*//* the form label is hidden when the placeholder is visual.  when the user starts typing, the label element drops down and becomes visible */
+}
+@media only screen and (max-width: 37.5em) {
   .form__input {
-    font-size: 1.5rem;
-    /*//* inputs by default use the browser's default font and color.  don't need to set them explicitly, can simply use 'inherit' */
-    font-family: inherit;
-    color: inherit;
-    padding: 1.5rem 2rem;
-    border-radius: 3px;
-    background-color: rgba(255, 255, 255, 0.7);
-    border: none;
-    /*//* need to add transparent border-bottom b/c otherwise when the element is in 'focus' and the border-bottom gets added, the element will grow in size by 3px and move on screen.  by already having the border there (yet transparent) the element won't appear to move */
-    border-bottom: 3px solid transparent;
-    width: 90%;
-    display: block;
-    transition: all 0.3s;
-    /*//* color the placeholder text */
-    /*//* the form label is hidden when the placeholder is visual.  when the user starts typing, the label element drops down and becomes visible */ }
-    @media only screen and (max-width: 37.5em) {
-      .form__input {
-        width: 100%; } }
-    .form__input:focus {
-      outline: none;
-      /*//* adding the 'box-shadow' and 'border-bottom' are nice for styling, but whenever you remove the default focus outlining you should add some sort of styling for screen reader accessibility */
-      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-      border-bottom: 3px solid #55c57a;
-      /*//* since the input elements have the 'required' attribute included, while the input field is invalid then bottom-border will be orange (color-secondary-dark).  once it's valid, the color will change to green (color-primary) */ }
-      .form__input:focus:invalid {
-        border-bottom: 3px solid #ff7730; }
-    .form__input::-webkit-input-placeholder {
-      color: #999; }
-    .form__input:placeholder-shown + .form__label {
-      opacity: 0;
-      transform: translateY(-4.5rem); }
-  .form__label {
-    font-size: 1.5rem;
-    color: #999;
-    margin-left: 2rem;
-    margin-top: 0.7rem;
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 0.5s; }
+    width: 100%;
+  }
+}
+.form__input:focus {
+  outline: none;
+  /*//* adding the 'box-shadow' and 'border-bottom' are nice for styling, but whenever you remove the default focus outlining you should add some sort of styling for screen reader accessibility */
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid #55c57a;
+  /*//* since the input elements have the 'required' attribute included, while the input field is invalid then bottom-border will be orange (color-secondary-dark).  once it's valid, the color will change to green (color-primary) */
+}
+.form__input:focus:invalid {
+  border-bottom: 3px solid #ff7730;
+}
+.form__input::-webkit-input-placeholder {
+  color: #999;
+}
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  transform: translateY(-4.5rem);
+}
+.form__label {
+  font-size: 1.5rem;
+  color: #999;
+  margin-left: 2rem;
+  margin-top: 0.7rem;
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.5s;
+}
+.form__radio-group {
+  width: 49%;
+  display: inline-block;
+}
+@media only screen and (max-width: 37.5em) {
   .form__radio-group {
-    width: 49%;
-    display: inline-block; }
-    @media only screen and (max-width: 37.5em) {
-      .form__radio-group {
-        width: 100%;
-        margin-bottom: 2rem; } }
-  .form__radio-input {
-    /*//* 'display: none' completely removes the element (vs using 'opacity' or 'visibility') */
-    display: none;
-    /*//* when it's checked (by clicking on the label, or fake radio button, since it's linked to the radio button) then make the inner dot of the fake radio button visible */ }
-    .form__radio-input:checked + .form__radio-label > .form__radio-button::after {
-      opacity: 1; }
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+.form__radio-input {
+  /*//* 'display: none' completely removes the element (vs using 'opacity' or 'visibility') */
+  display: none;
+  /*//* when it's checked (by clicking on the label, or fake radio button, since it's linked to the radio button) then make the inner dot of the fake radio button visible */
+}
+.form__radio-input:checked + .form__radio-label > .form__radio-button::after {
+  opacity: 1;
+}
+.form__radio-label {
+  font-size: 1.6rem;
+  cursor: pointer;
+  position: relative;
+  padding-left: 3.5rem;
+}
+@media only screen and (max-width: 37.5em) {
   .form__radio-label {
-    font-size: 1.6rem;
-    cursor: pointer;
-    position: relative;
-    padding-left: 3.5rem; }
-    @media only screen and (max-width: 37.5em) {
-      .form__radio-label {
-        font-size: 2rem; } }
-  .form__radio-button {
-    height: 3rem;
-    width: 3rem;
-    border: 5px solid #55c57a;
-    border-radius: 50%;
-    display: inline-block;
-    position: absolute;
-    left: 0;
-    top: -0.4rem;
-    /*//* its inner dot or 'checked' indicator */ }
-    .form__radio-button::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: block;
-      height: 1.3rem;
-      width: 1.3rem;
-      border-radius: 50%;
-      background-color: #55c57a;
-      opacity: 0;
-      transition: opacity 0.3s; }
+    font-size: 2rem;
+  }
+}
+.form__radio-button {
+  height: 3rem;
+  width: 3rem;
+  border: 5px solid #55c57a;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: -0.4rem;
+  /*//* its inner dot or 'checked' indicator */
+}
+.form__radio-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  height: 1.3rem;
+  width: 1.3rem;
+  border-radius: 50%;
+  background-color: #55c57a;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
 
 .popup {
   height: 100vh;
@@ -598,102 +774,132 @@ body {
   visibility: hidden;
   transition: all 0.5s;
   /*//* example of 'graceful degradation' by adding backdrop blur for Safari which currently supports it, but is ignored by other browsers */
-  /*//* this element also has the id of 'popup'.  the 'Book Now' buttons on the 3 tour cards have an href of '#popup', so when they're clicked this element is the target.  so we can use the pseudo-class of ':target' to control this element when it's active target of a button click. when it's no longer the target (using a button to close it and activate another target ie '#section-tours' then it'll go back to its initial state */ }
-  @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
-    .popup {
-      -webkit-backdrop-filter: blur(10px);
-      backdrop-filter: blur(10px);
-      background-color: rgba(0, 0, 0, 0.3); } }
-  .popup:target {
-    opacity: 1;
-    visibility: visible; }
-    .popup:target .popup__content {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 1; }
-  .popup__close:link, .popup__close:visited {
-    color: #777;
-    position: absolute;
-    top: 2.5rem;
-    right: 2.5rem;
-    font-size: 3rem;
-    text-decoration: none;
-    display: inline-block;
-    line-height: 1;
-    transition: color 0.2s; }
-  .popup__close:hover {
-    color: #55c57a; }
+  /*//* this element also has the id of 'popup'.  the 'Book Now' buttons on the 3 tour cards have an href of '#popup', so when they're clicked this element is the target.  so we can use the pseudo-class of ':target' to control this element when it's active target of a button click. when it's no longer the target (using a button to close it and activate another target ie '#section-tours' then it'll go back to its initial state */
+}
+@supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+  .popup {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+.popup:target {
+  opacity: 1;
+  visibility: visible;
+}
+.popup:target .popup__content {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+.popup__close:link,
+.popup__close:visited {
+  color: #777;
+  position: absolute;
+  top: 2.5rem;
+  right: 2.5rem;
+  font-size: 3rem;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.popup__close:hover {
+  color: #55c57a;
+}
+.popup__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  background-color: #fff;
+  border-radius: 6px;
+  /*//* interesting technique of using a parent table with two children table-cells.  then can use 'vertical-align: middle' to on a cell in relation to the other cell.  would probably used flexbox or grid in the future */
+  display: table;
+  /*//* the images were overlapping the border-radius, so need 'overflow: hidden' */
+  overflow: hidden;
+  /*//* starts out small and hidden so it grows when displayed with the ':target' pseudo class above ('transform' is already used above in the mixin, so using it again with only 'scale' would overwrite 'translate' used in the mixin, so it needs to be included here as well)  ALSO, order matters.  'scale' needs to be second or it doesn't scale from the center */
+  transform: translate(-50%, -50%) scale(0.2);
+  opacity: 0;
+  /*//* add a short delay (0.2s) so that the screen starts going dark first (from the parent element '.popup' transition) before the content element ('.popup__content') begins its transition effect */
+  transition: all 0.5s 0.2s;
+}
+@media only screen and (max-width: 56.25em) {
   .popup__content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 75%;
-    background-color: #fff;
-    border-radius: 6px;
-    /*//* interesting technique of using a parent table with two children table-cells.  then can use 'vertical-align: middle' to on a cell in relation to the other cell.  would probably used flexbox or grid in the future */
-    display: table;
-    /*//* the images were overlapping the border-radius, so need 'overflow: hidden' */
-    overflow: hidden;
-    /*//* starts out small and hidden so it grows when displayed with the ':target' pseudo class above ('transform' is already used above in the mixin, so using it again with only 'scale' would overwrite 'translate' used in the mixin, so it needs to be included here as well)  ALSO, order matters.  'scale' needs to be second or it doesn't scale from the center */
-    transform: translate(-50%, -50%) scale(0.2);
-    opacity: 0;
-    /*//* add a short delay (0.2s) so that the screen starts going dark first (from the parent element '.popup' transition) before the content element ('.popup__content') begins its transition effect */
-    transition: all 0.5s 0.2s; }
-    @media only screen and (max-width: 56.25em) {
-      .popup__content {
-        display: block;
-        max-height: 95vh;
-        overflow: scroll; } }
-    @media only screen and (max-width: 37.5em) {
-      .popup__content {
-        width: 90%;
-        max-height: 95vh;
-        overflow: scroll; } }
-  .popup__left {
-    width: 33.333333%;
-    display: table-cell; }
-    @media only screen and (max-width: 56.25em) {
-      .popup__left {
-        display: block;
-        width: calc(100% - 10rem);
-        margin: 3rem 5rem 0;
-        text-align: center; } }
-    @media only screen and (max-width: 37.5em) {
-      .popup__left {
-        display: none; } }
-  .popup__right {
-    width: 66.666667%;
-    display: table-cell;
-    vertical-align: middle;
-    padding: 3rem 5rem; }
-    @media only screen and (max-width: 56.25em) {
-      .popup__right {
-        width: auto;
-        display: block; }
-        .popup__right .btn.btn--green {
-          display: table;
-          margin: 0 auto; } }
-    @media only screen and (max-width: 37.5em) {
-      .popup__right .heading-secondary {
-        display: none; } }
-  .popup__img {
     display: block;
-    width: 100%; }
-    @media only screen and (max-width: 56.25em) {
-      .popup__img:first-of-type {
-        display: none; } }
+    max-height: 95vh;
+    overflow: scroll;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .popup__content {
+    width: 90%;
+    max-height: 95vh;
+    overflow: scroll;
+  }
+}
+.popup__left {
+  width: 33.333333%;
+  display: table-cell;
+}
+@media only screen and (max-width: 56.25em) {
+  .popup__left {
+    display: block;
+    width: calc(100% - 10rem);
+    margin: 3rem 5rem 0;
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .popup__left {
+    display: none;
+  }
+}
+.popup__right {
+  width: 66.666667%;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 3rem 5rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .popup__right {
+    width: auto;
+    display: block;
+  }
+  .popup__right .btn.btn--green {
+    display: table;
+    margin: 0 auto;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .popup__right .heading-secondary {
+    display: none;
+  }
+}
+.popup__img {
+  display: block;
+  width: 100%;
+}
+@media only screen and (max-width: 56.25em) {
+  .popup__img:first-of-type {
+    display: none;
+  }
+}
+.popup__text {
+  font-size: 1.4rem;
+  margin-bottom: 4rem;
+  /*//* really cool new CSS feature, put text into columns */
+  column-count: 2;
+  column-gap: 4rem;
+  column-rule: 1px solid #eee;
+  /*//* add hyphens to wrapped text */
+  hyphens: auto;
+}
+@media only screen and (max-width: 37.5em) {
   .popup__text {
-    font-size: 1.4rem;
-    margin-bottom: 4rem;
-    /*//* really cool new CSS feature, put text into columns */
-    column-count: 2;
-    column-gap: 4rem;
-    column-rule: 1px solid #eee;
-    /*//* add hyphens to wrapped text */
-    hyphens: auto; }
-    @media only screen and (max-width: 37.5em) {
-      .popup__text {
-        column-count: 1; } }
+    column-count: 1;
+  }
+}
 
 .story {
   width: 75%;
@@ -703,118 +909,155 @@ body {
   border-radius: 3px;
   padding: 6rem 4rem 6rem 9rem;
   font-size: 1.6rem;
-  transform: skewX(-12deg); }
-  @media only screen and (max-width: 56.25em) {
-    .story {
-      width: 100%; } }
-  @media only screen and (max-width: 37.5em) {
-    .story {
-      padding: 5rem 4rem;
-      text-align: center;
-      transform: none; } }
-  .story:hover .story__caption {
-    opacity: 1;
-    transform: translate(-50%, -50%); }
-  .story:hover .story__img {
-    transform: translateX(-3.7rem) scale(1);
-    filter: brightness(50%); }
-  .story__shape {
-    width: 15rem;
-    height: 15rem;
-    float: left;
-    /*//* 'shape-outside' allows content to flow (be shaped) around this element.  it requires the element to be floated and have an explicit height and width */
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%);
-    -webkit-clip-path: circle(49% at 50% 50%);
-    clip-path: circle(49% at 50% 50%);
-    /*//* 'translateX' here acts like margin pushing the element away from the neighboring text, but used b/c this element is floated */
-    transform: translateX(-3rem) skewX(12deg);
-    position: relative;
-    overflow: hidden; }
-    @media only screen and (max-width: 37.5em) {
-      .story__shape {
-        float: none;
-        margin: 0 auto 1rem;
-        transform: none; } }
-  .story__img {
-    height: 100%;
-    transform: translateX(-3.7rem) scale(1.3);
-    transition: all 0.5s;
-    backface-visibility: hidden; }
-  .story__caption {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 20%);
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 1.7rem;
+  transform: skewX(-12deg);
+}
+@media only screen and (max-width: 56.25em) {
+  .story {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .story {
+    padding: 5rem 4rem;
     text-align: center;
-    opacity: 0;
-    transition: all 0.5s;
-    backface-visibility: hidden; }
+    transform: none;
+  }
+}
+.story:hover .story__caption {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+.story:hover .story__img {
+  transform: translateX(-3.7rem) scale(1);
+  filter: brightness(50%);
+}
+.story__shape {
+  width: 15rem;
+  height: 15rem;
+  float: left;
+  /*//* 'shape-outside' allows content to flow (be shaped) around this element.  it requires the element to be floated and have an explicit height and width */
+  -webkit-shape-outside: circle(50% at 50% 50%);
+  shape-outside: circle(50% at 50% 50%);
+  -webkit-clip-path: circle(49% at 50% 50%);
+  clip-path: circle(49% at 50% 50%);
+  /*//* 'translateX' here acts like margin pushing the element away from the neighboring text, but used b/c this element is floated */
+  transform: translateX(-3rem) skewX(12deg);
+  position: relative;
+  overflow: hidden;
+}
+@media only screen and (max-width: 37.5em) {
+  .story__shape {
+    float: none;
+    margin: 0 auto 1rem;
+    transform: none;
+  }
+}
+.story__img {
+  height: 100%;
+  transform: translateX(-3.7rem) scale(1.3);
+  transition: all 0.5s;
+  backface-visibility: hidden;
+}
+.story__caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 20%);
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.7rem;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.5s;
+  backface-visibility: hidden;
+}
+.story__text {
+  transform: skewX(12deg);
+  word-spacing: 0.15rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .story__text p {
+    font-size: 2rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
   .story__text {
-    transform: skewX(12deg);
-    word-spacing: 0.15rem; }
-    @media only screen and (max-width: 56.25em) {
-      .story__text p {
-        font-size: 2rem; } }
-    @media only screen and (max-width: 37.5em) {
-      .story__text {
-        transform: none; } }
+    transform: none;
+  }
+}
 
 .footer {
   background-color: #333;
   padding: 10rem 0;
   font-size: 1.4rem;
-  color: #999; }
-  @media only screen and (max-width: 56.25em) {
-    .footer {
-      padding: 8rem 0; } }
+  color: #999;
+}
+@media only screen and (max-width: 56.25em) {
+  .footer {
+    padding: 8rem 0;
+  }
+}
+.footer__logo-box {
+  text-align: center;
+  margin-bottom: 8rem;
+}
+@media only screen and (max-width: 56.25em) {
   .footer__logo-box {
-    text-align: center;
-    margin-bottom: 8rem; }
-    @media only screen and (max-width: 56.25em) {
-      .footer__logo-box {
-        margin-bottom: 6rem; } }
-  .footer__logo {
-    width: 15rem;
-    height: auto; }
+    margin-bottom: 6rem;
+  }
+}
+.footer__logo {
+  width: 15rem;
+  height: auto;
+}
+.footer__navigation {
+  border-top: 1px solid #999;
+  padding-top: 2rem;
+  display: inline-block;
+}
+@media only screen and (max-width: 56.25em) {
   .footer__navigation {
-    border-top: 1px solid #999;
-    padding-top: 2rem;
-    display: inline-block; }
-    @media only screen and (max-width: 56.25em) {
-      .footer__navigation {
-        width: 100%;
-        text-align: center; } }
-  .footer__list {
-    list-style: none; }
-  .footer__item {
-    display: inline-block; }
-    .footer__item:not(:last-child) {
-      margin-right: 1.5rem; }
-  .footer__link:link, .footer__link:visited {
-    color: #f7f7f7;
-    background-color: #333;
-    text-decoration: none;
-    text-transform: uppercase;
-    display: inline-block;
-    transition: all 0.2s; }
-  .footer__link:hover, .footer__link:active {
-    color: #55c57a;
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
-    transform: rotate(5deg) scale(1.3); }
+    width: 100%;
+    text-align: center;
+  }
+}
+.footer__list {
+  list-style: none;
+}
+.footer__item {
+  display: inline-block;
+}
+.footer__item:not(:last-child) {
+  margin-right: 1.5rem;
+}
+.footer__link:link,
+.footer__link:visited {
+  color: #f7f7f7;
+  background-color: #333;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: all 0.2s;
+}
+.footer__link:hover,
+.footer__link:active {
+  color: #55c57a;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+  transform: rotate(5deg) scale(1.3);
+}
+.footer__copyright {
+  border-top: 1px solid #999;
+  padding-top: 2rem;
+  display: inline-block;
+  width: 90%;
+  float: right;
+}
+@media only screen and (max-width: 56.25em) {
   .footer__copyright {
-    border-top: 1px solid #999;
-    padding-top: 2rem;
-    display: inline-block;
-    width: 90%;
-    float: right; }
-    @media only screen and (max-width: 56.25em) {
-      .footer__copyright {
-        width: 100%;
-        text-align: center; } }
+    width: 100%;
+    text-align: center;
+  }
+}
 
 .row {
   max-width: 114rem;
@@ -823,306 +1066,457 @@ body {
   /*//* all rows will include columns that are floated, which therefore need to be cleared */
   /*//* ATTRIBUTE SELECTOR!!!! */
   /*//* select all elements with a class of "col-..." */
-  /*//* could also use a 'starts with' selector like '[class^='col-']' */ }
-  @media only screen and (max-width: 75em) {
-    .row {
-      max-width: 95%; } }
-  @media only screen and (max-width: 56.25em) {
-    .row {
-      max-width: 80%; } }
-  @media only screen and (max-width: 37.5em) {
-    .row {
-      max-width: 85%; } }
+  /*//* could also use a 'starts with' selector like '[class^='col-']' */
+}
+@media only screen and (max-width: 75em) {
+  .row {
+    max-width: 95%;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  .row {
+    max-width: 80%;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .row {
+    max-width: 85%;
+  }
+}
+.row:not(:last-child) {
+  margin-bottom: 8rem;
+}
+@media only screen and (max-width: 56.25em) {
   .row:not(:last-child) {
-    margin-bottom: 8rem; }
-    @media only screen and (max-width: 56.25em) {
-      .row:not(:last-child) {
-        margin-bottom: 6rem; } }
-  .row::after {
-    content: "";
-    display: table;
-    clear: both; }
-  .row [class*="col-"] {
-    float: left; }
-    .row [class*="col-"]:not(:last-child) {
-      margin-right: 6rem; }
-      @media only screen and (max-width: 56.25em) {
-        .row [class*="col-"]:not(:last-child) {
-          margin-right: 0;
-          margin-bottom: 6rem; } }
-    @media only screen and (max-width: 56.25em) {
-      .row [class*="col-"] {
-        width: 100% !important; } }
-  .row .col-1-of-2 {
-    /*//* in Sass calc() must include variables in a '' syntax */
-    width: calc((100% - 6rem) / 2); }
-  .row .col-1-of-3 {
-    width: calc((100% - (2 * 6rem)) / 3); }
-  .row .col-2-of-3 {
-    width: calc( 2 * ((100% - (2 * 6rem)) / 3) + 6rem); }
-  .row .col-1-of-4 {
-    width: calc((100% - (3 * 6rem)) / 4); }
-  .row .col-2-of-4 {
-    width: calc( 2 * ((100% - (3 * 6rem)) / 4) + 6rem); }
-  .row .col-3-of-4 {
-    width: calc( 3 * ((100% - (3 * 6rem)) / 4) + ( 2 * 6rem )); }
+    margin-bottom: 6rem;
+  }
+}
+.row::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.row [class*='col-'] {
+  float: left;
+}
+.row [class*='col-']:not(:last-child) {
+  margin-right: 6rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .row [class*='col-']:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 6rem;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  .row [class*='col-'] {
+    width: 100% !important;
+  }
+}
+.row .col-1-of-2 {
+  /*//* in Sass calc() must include variables in a '' syntax */
+  width: calc((100% - 6rem) / 2);
+}
+.row .col-1-of-3 {
+  width: calc((100% - (2 * 6rem)) / 3);
+}
+.row .col-2-of-3 {
+  width: calc(2 * ((100% - (2 * 6rem)) / 3) + 6rem);
+}
+.row .col-1-of-4 {
+  width: calc((100% - (3 * 6rem)) / 4);
+}
+.row .col-2-of-4 {
+  width: calc(2 * ((100% - (3 * 6rem)) / 4) + 6rem);
+}
+.row .col-3-of-4 {
+  width: calc(3 * ((100% - (3 * 6rem)) / 4) + (2 * 6rem));
+}
 
 .header {
   height: 100vh;
-  background-color: #f7f7f7; }
+  background-color: #f7f7f7;
+}
+.header__background {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 133, 0.8)
+    ),
+    url('../img/hero-small.jpg');
+  /*//* don't forget to include 'background-size: cover' */
+  background-size: cover;
+  /*//* 'bg-pos: top' ensures the top of the image is the stationary point as the screen size changes (the bottom and sides will adjust instead)...or use 'center' */
+  background-position: top;
+  position: relative;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /*//* use larger image on higher resolution screens, that are also larger than a (600px) */
+  /*//* (specific for Safari) */
+  /*//* OR when screen width is wider than 2000px, regardless of pixel density */
+}
+@media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+  only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5),
+  only screen and (min-width: 125em) {
   .header__background {
-    height: 95vh;
-    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero-small.jpg");
-    /*//* don't forget to include 'background-size: cover' */
-    background-size: cover;
-    /*//* 'bg-pos: top' ensures the top of the image is the stationary point as the screen size changes (the bottom and sides will adjust instead)...or use 'center' */
-    background-position: top;
-    position: relative;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-    /*//* use larger image on higher resolution screens, that are also larger than a (600px) */
-    /*//* (specific for Safari) */
-    /*//* OR when screen width is wider than 2000px, regardless of pixel density */ }
-    @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em), only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5), only screen and (min-width: 125em) {
-      .header__background {
-        background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg"); } }
-    @media only screen and (max-width: 75em) {
-      .header__background {
-        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
-        clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%); } }
-    @media only screen and (max-width: 56.25em) {
-      .header__background {
-        height: 100vh;
-        -webkit-clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
-        clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%); } }
-  .header__logo-box {
-    position: absolute;
-    top: 4rem;
-    left: 4rem; }
-  .header__logo {
-    height: 3.5rem; }
-  .header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /*//* centers all elements within the container */
-    text-align: center; }
+    background-image: linear-gradient(
+        to right bottom,
+        rgba(126, 213, 111, 0.8),
+        rgba(40, 180, 133, 0.8)
+      ),
+      url('../img/hero.jpg');
+  }
+}
+@media only screen and (max-width: 75em) {
+  .header__background {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  .header__background {
+    height: 100vh;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+  }
+}
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+.header__logo {
+  height: 3.5rem;
+}
+.header__text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*//* centers all elements within the container */
+  text-align: center;
+}
 
 .navigation {
-  /*//* covers the entire viewport so that the nav list child can be centered on the screen, and 'pos: fixed' so that it remains there even when scrolling.  z-index on top of the background, but below the menu button */ }
-  .navigation__checkbox {
-    display: none;
-    /*//* when the checkbox is checked (by clicking on the label which is the white menu button) then the 'nav__background' element will scale up to fill the screen */ }
-    .navigation__checkbox:checked ~ .navigation__background {
-      transform: scale(70); }
-    .navigation__checkbox:checked ~ .navigation__nav {
-      opacity: 1;
-      left: 0; }
-    .navigation__checkbox:checked + .navigation__button .navigation__icon {
-      background-color: transparent; }
-      .navigation__checkbox:checked + .navigation__button .navigation__icon::before {
-        top: 0;
-        transform: rotate(-135deg); }
-      .navigation__checkbox:checked + .navigation__button .navigation__icon::after {
-        top: 0;
-        transform: rotate(135deg); }
+  /*//* covers the entire viewport so that the nav list child can be centered on the screen, and 'pos: fixed' so that it remains there even when scrolling.  z-index on top of the background, but below the menu button */
+}
+.navigation__checkbox {
+  display: none;
+  /*//* when the checkbox is checked (by clicking on the label which is the white menu button) then the 'nav__background' element will scale up to fill the screen */
+}
+.navigation__checkbox:checked ~ .navigation__background {
+  transform: scale(70);
+}
+.navigation__checkbox:checked ~ .navigation__nav {
+  opacity: 1;
+  left: 0;
+}
+.navigation__checkbox:checked + .navigation__button .navigation__icon {
+  background-color: transparent;
+}
+.navigation__checkbox:checked + .navigation__button .navigation__icon::before {
+  top: 0;
+  transform: rotate(-135deg);
+}
+.navigation__checkbox:checked + .navigation__button .navigation__icon::after {
+  top: 0;
+  transform: rotate(135deg);
+}
+.navigation__button {
+  background-color: #fff;
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  position: fixed;
+  top: 6rem;
+  right: 6rem;
+  z-index: 1002;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+}
+@media only screen and (max-width: 56.25em) {
   .navigation__button {
-    background-color: #fff;
-    height: 7rem;
-    width: 7rem;
-    border-radius: 50%;
-    position: fixed;
-    top: 6rem;
-    right: 6rem;
-    z-index: 1002;
-    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
-    text-align: center;
-    cursor: pointer; }
-    @media only screen and (max-width: 56.25em) {
-      .navigation__button {
-        top: 4rem;
-        right: 4rem; } }
-    @media only screen and (max-width: 37.5em) {
-      .navigation__button {
-        top: 2.5rem;
-        right: 2.5rem; } }
-    .navigation__button:hover .navigation__icon {
-      background-color: transparent; }
-    .navigation__button:hover .navigation__icon::before {
-      top: 0;
-      transform: rotate(90deg); }
-    .navigation__button:hover .navigation__icon::after {
-      top: 0;
-      transform: rotate(-180deg); }
-  .navigation__icon {
-    position: relative;
-    /*//* move it down half the height of its parent (&__button @ 7rem) minus half its own height */
-    top: calc(3.5rem - 1px); }
-    .navigation__icon, .navigation__icon::before, .navigation__icon::after {
-      width: 3rem;
-      height: 2px;
-      background-color: #333;
-      display: inline-block; }
-    .navigation__icon::before, .navigation__icon::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      transition: all 0.2s; }
-    .navigation__icon::before {
-      top: -1rem; }
-    .navigation__icon::after {
-      top: 1rem; }
+    top: 4rem;
+    right: 4rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .navigation__button {
+    top: 2.5rem;
+    right: 2.5rem;
+  }
+}
+.navigation__button:hover .navigation__icon {
+  background-color: transparent;
+}
+.navigation__button:hover .navigation__icon::before {
+  top: 0;
+  transform: rotate(90deg);
+}
+.navigation__button:hover .navigation__icon::after {
+  top: 0;
+  transform: rotate(-180deg);
+}
+.navigation__icon {
+  position: relative;
+  /*//* move it down half the height of its parent (&__button @ 7rem) minus half its own height */
+  top: calc(3.5rem - 1px);
+}
+.navigation__icon,
+.navigation__icon::before,
+.navigation__icon::after {
+  width: 3rem;
+  height: 2px;
+  background-color: #333;
+  display: inline-block;
+}
+.navigation__icon::before,
+.navigation__icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  transition: all 0.2s;
+}
+.navigation__icon::before {
+  top: -1rem;
+}
+.navigation__icon::after {
+  top: 1rem;
+}
+.navigation__background {
+  /*//* it starts slightly smaller than the white menu button that sits above it when it's shrunk down */
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  position: fixed;
+  top: 6.5rem;
+  right: 6.5rem;
+  background-image: radial-gradient(#7ed56f, #28b485);
+  z-index: 1000;
+  transition: transform 0.5s;
+}
+@media only screen and (max-width: 56.25em) {
   .navigation__background {
-    /*//* it starts slightly smaller than the white menu button that sits above it when it's shrunk down */
-    height: 6rem;
-    width: 6rem;
-    border-radius: 50%;
-    position: fixed;
-    top: 6.5rem;
-    right: 6.5rem;
-    background-image: radial-gradient(#7ed56f, #28b485);
-    z-index: 1000;
-    transition: transform 0.5s; }
-    @media only screen and (max-width: 56.25em) {
-      .navigation__background {
-        top: 4.5rem;
-        right: 4.5rem; } }
-    @media only screen and (max-width: 37.5em) {
-      .navigation__background {
-        top: 3rem;
-        right: 3rem; } }
-  .navigation__nav {
-    height: 100vh;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1001;
-    /*//* initially hidden off screen */
-    opacity: 0;
-    left: -100%;
-    transition: all 0.6s cubic-bezier(0.33, 1.02, 0.39, 1.07); }
+    top: 4.5rem;
+    right: 4.5rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .navigation__background {
+    top: 3rem;
+    right: 3rem;
+  }
+}
+.navigation__nav {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  /*//* initially hidden off screen */
+  opacity: 0;
+  left: -100%;
+  transition: all 0.6s cubic-bezier(0.33, 1.02, 0.39, 1.07);
+}
+.navigation__list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
+}
+@media only screen and (max-width: 37.5em) {
   .navigation__list {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    list-style: none;
-    text-align: center; }
-    @media only screen and (max-width: 37.5em) {
-      .navigation__list {
-        width: 90%; } }
-  .navigation__item {
-    margin: 1rem; }
-  .navigation__link:link, .navigation__link:visited {
-    /*//* <a> is an 'inline' element, so 'inline-block' is needed to provide padding and animate translateX */
-    display: inline-block;
-    font-size: 3rem;
-    font-weight: 300;
-    padding: 1rem 2rem;
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
-    background-size: 220%;
-    background-repeat: no-repeat;
-    transition: all 0.4s; }
-  .navigation__link:hover, .navigation__link:active {
-    background-position: 100% 60%;
-    color: #55c57a;
-    transform: translateX(1rem);
-    /*//* prevents link outline when tab key is used */
-    outline: none; }
+    width: 90%;
+  }
+}
+.navigation__item {
+  margin: 1rem;
+}
+.navigation__link:link,
+.navigation__link:visited {
+  /*//* <a> is an 'inline' element, so 'inline-block' is needed to provide padding and animate translateX */
+  display: inline-block;
+  font-size: 3rem;
+  font-weight: 300;
+  padding: 1rem 2rem;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 50%,
+    #fff 50%
+  );
+  background-size: 220%;
+  background-repeat: no-repeat;
+  transition: all 0.4s;
+}
+.navigation__link:hover,
+.navigation__link:active {
+  background-position: 100% 60%;
+  color: #55c57a;
+  transform: translateX(1rem);
+  /*//* prevents link outline when tab key is used */
+  outline: none;
+}
 
 /*//?----------  ABOUT SECTION  ----------*/
 .section-about {
   background-color: #f7f7f7;
-  padding: 3rem 0 15rem; }
-  @media only screen and (max-width: 56.25em) {
-    .section-about {
-      padding: 5rem 0 45rem; } }
-  @media only screen and (max-width: 37.5em) {
-    .section-about {
-      padding: 5rem 0 30rem; } }
+  padding: 3rem 0 15rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .section-about {
+    padding: 5rem 0 45rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .section-about {
+    padding: 5rem 0 30rem;
+  }
+}
 
 /*//?----------  FEATURES SECTION  ----------*/
 .section-features {
-  background-color: #f7f7f7; }
+  background-color: #f7f7f7;
+}
+.section-features__background {
+  padding: 20rem 0;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 133, 0.8)
+    ),
+    url('/img/nat-4.jpg');
+  background-size: cover;
+  transform: skewY(-6deg);
+  /*//* select all DIRECT children of '.section-features' (which is the div.row that contains all the feature box columns) and remove the skew */
+}
+@media only screen and (max-width: 56.25em) {
   .section-features__background {
-    padding: 20rem 0;
-    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/nat-4.jpg");
-    background-size: cover;
-    transform: skewY(-6deg);
-    /*//* select all DIRECT children of '.section-features' (which is the div.row that contains all the feature box columns) and remove the skew */ }
-    @media only screen and (max-width: 56.25em) {
-      .section-features__background {
-        padding: 15rem 0; } }
-    @media only screen and (max-width: 37.5em) {
-      .section-features__background {
-        padding: 10rem 0; } }
-    .section-features__background > * {
-      transform: skewY(6deg); }
+    padding: 15rem 0;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .section-features__background {
+    padding: 10rem 0;
+  }
+}
+.section-features__background > * {
+  transform: skewY(6deg);
+}
 
 /*//?----------  TOURS SECTION  ----------*/
 .section-tours {
   background-color: #f7f7f7;
   padding: 15rem 0;
-  /*//* on all touchscreens (except iPad Pro in landscape) the cards in the Tours Section should be shown in one column, not 3, b/c they are displayed with the alternate layout (with the backface info shown on the front) so they look fucked up when displayed in 3 columns */ }
-  @media only screen and (max-width: 75em) and (hover: none) {
-    .section-tours .row {
-      max-width: 80%; }
-      .section-tours .row [class*="col-"] {
-        width: 100% !important; }
-        .section-tours .row [class*="col-"]:not(:last-child) {
-          margin-right: 0;
-          margin-bottom: 6rem; } }
-  @media only screen and (max-width: 56.25em) {
-    .section-tours {
-      padding: 10rem 0; } }
-  @media only screen and (max-width: 37.5em) {
-    .section-tours {
-      padding: 7.5rem 0 5rem; } }
+  /*//* on all touchscreens (except iPad Pro in landscape) the cards in the Tours Section should be shown in one column, not 3, b/c they are displayed with the alternate layout (with the backface info shown on the front) so they look fucked up when displayed in 3 columns */
+}
+@media only screen and (max-width: 75em) and (hover: none) {
+  .section-tours .row {
+    max-width: 80%;
+  }
+  .section-tours .row [class*='col-'] {
+    width: 100% !important;
+  }
+  .section-tours .row [class*='col-']:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 6rem;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  .section-tours {
+    padding: 10rem 0;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .section-tours {
+    padding: 7.5rem 0 5rem;
+  }
+}
 
 /*//?----------  STORIES SECTION  ----------*/
 .section-stories {
   padding: 15rem 0;
-  position: relative; }
-  @media only screen and (max-width: 56.25em) {
-    .section-stories {
-      padding: 10rem 0; } }
-  @media only screen and (max-width: 37.5em) {
-    .section-stories {
-      padding: 5rem 0; } }
+  position: relative;
+}
+@media only screen and (max-width: 56.25em) {
+  .section-stories {
+    padding: 10rem 0;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .section-stories {
+    padding: 5rem 0;
+  }
+}
 
 /*//?----------  BOOKING SECTION  ----------*/
 .section-book {
   padding: 15rem 0;
-  background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
-  @media only screen and (max-width: 56.25em) {
-    .section-book {
-      padding: 10rem 0; } }
+  background-image: linear-gradient(to right bottom, #7ed56f, #28b485);
+}
+@media only screen and (max-width: 56.25em) {
+  .section-book {
+    padding: 10rem 0;
+  }
+}
 
 .book {
-  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(../../img/nat-10.jpg);
+  background-image: linear-gradient(
+      105deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.9) 50%,
+      transparent 50%
+    ),
+    url(/img/nat-10.jpg);
   background-size: cover;
   border-radius: 3px;
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.35); }
-  @media only screen and (max-width: 75em) {
-    .book {
-      background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 70%, transparent 70%), url(../../img/nat-10.jpg); } }
-  @media only screen and (max-width: 37.5em) {
-    .book {
-      background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 100%), url(../../img/nat-10.jpg); } }
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.35);
+}
+@media only screen and (max-width: 75em) {
+  .book {
+    background-image: linear-gradient(
+        105deg,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0.9) 70%,
+        transparent 70%
+      ),
+      url(/img/nat-10.jpg);
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .book {
+    background-image: linear-gradient(
+        105deg,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(255, 255, 255, 0.8) 100%
+      ),
+      url(/img/nat-10.jpg);
+  }
+}
+.book__form {
+  width: 50%;
+  padding: 6rem;
+}
+@media only screen and (max-width: 75em) {
   .book__form {
-    width: 50%;
-    padding: 6rem; }
-    @media only screen and (max-width: 75em) {
-      .book__form {
-        width: 75%; } }
-    @media only screen and (max-width: 56.25em) {
-      .book__form {
-        padding: 3rem; } }
-    @media only screen and (max-width: 37.5em) {
-      .book__form {
-        width: 100%; } }
+    width: 75%;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  .book__form {
+    padding: 3rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .book__form {
+    width: 100%;
+  }
+}
