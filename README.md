@@ -4,7 +4,7 @@
 
 Created while taking an online course for the purpose of learning some more advanced CSS styling and animation techniques.  Could be optimized and use some refactoring, might have a few responsive quirks.  Served its purpose.
 
-View site [here](https://ndstephens.github.io/natours/)
+### View site [here](https://ndstephens.github.io/natours/)
 
 <br>
 
